@@ -1,0 +1,25 @@
+import type { Metadata } from "next";
+import { Manrope } from "next/font/google";
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+});
+
+export const metadata: Metadata = {
+  title: "Travel With CAPY",
+  description: "The best travel companion",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={manrope.className}>
+      <body>{children}</body>
+    </html>
+  );
+}
