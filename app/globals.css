@@ -118,31 +118,23 @@
   border-color: black !important;
   border-width: 2px !important;
   border-radius: 10px !important;
-  padding-left: 12px !important;
   height: 60px !important;
 }
 
-.ant-select-selection-search-input {
-  margin-top: 10px !important;
-  height: 32px !important;
-  font-size: 1rem !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
 .ant-select-selection-placeholder {
-  margin-top: 5px;
-  display: flex !important;
-  align-items: center !important;
   font-size: 1rem !important;
 }
 
-/* Style for selected options in dropdown */
+.ant-select-selection-item,
+.ant-select-selection-search-input {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+}
+
 .ant-select-item-option-selected {
   background-color: #fcd36a !important;
 }
 
-/* Style for hover state of options */
 .ant-select-item-option-active {
   background-color: rgba(252, 211, 106, 0.5) !important;
 }
@@ -163,9 +155,35 @@
   color: #000000 !important;
 }
 
-/* Optional: Change hover color of the clear icon */
 .ant-tag-close-icon:hover {
   color: #d95638 !important;
+}
+
+/* For multi select mode */
+.ant-select-multiple .ant-select-selector {
+  padding-left: 12px !important;
+}
+
+.ant-select-multiple .ant-select-selection-search-input {
+  margin-top: 10px !important;
+  height: 32px !important;
+  font-size: 1rem !important;
+}
+
+.ant-select-multiple .ant-select-selection-placeholder {
+  margin-top: 5px;
+  font-size: 1rem !important;
+}
+
+/* For single select mode */
+
+.ant-select-single .ant-select-selector {
+  padding-left: 20px !important;
+}
+
+/* Center the search icon in single select */
+.ant-select-single .ant-select-arrow {
+  margin-top: 8px !important;
 }
 
 .inputTitle {

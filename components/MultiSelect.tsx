@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Select, Tag, Tooltip } from "antd";
 import type { SelectProps } from "antd";
 
@@ -13,9 +13,12 @@ const options = [
   { value: "Spain", label: "Spain" },
 ];
 
-const MultiSelect: React.FC = () => {
-  const [value, setValue] = useState<string[]>([]);
+interface MultiSelectProps {
+  value: string[];
+  onChange: (value: string[]) => void;
+}
 
+const MultiSelect: React.FC<MultiSelectProps> = ({ value, onChange }) => {
   const tagRender: TagRender = (props) => {
     const { label, closable, onClose } = props;
     const onPreventMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
@@ -51,12 +54,9 @@ const MultiSelect: React.FC = () => {
       tagRender={tagRender}
       showSearch
       value={value}
-      onChange={setValue}
+      onChange={onChange}
       style={{
         width: "100%",
-
-        borderRadius: "20px",
-        borderColor: "black",
       }}
       options={options}
       placeholder="Select countries"
