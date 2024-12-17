@@ -186,6 +186,12 @@
   margin-top: 8px !important;
 }
 
+/* Self defined styles */
+
 .inputTitle {
-  @apply font-bold text-xl text-black-200 mb-5;
+  @apply font-bold text-xl text-black-200 mb-4;
+}
+
+.inputSubtitle {
+  @apply font-bold text-base text-black-200 mb-2;
 }

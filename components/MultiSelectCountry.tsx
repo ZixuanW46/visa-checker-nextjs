@@ -1,24 +1,30 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Select, Tag, Tooltip } from "antd";
 import type { SelectProps } from "antd";
 
 type TagRender = SelectProps["tagRender"];
-
-const options = [
-  { value: "UK", label: "UK" },
-  { value: "Germany", label: "Germany" },
-  { value: "USA", label: "USA" },
-  { value: "Spain", label: "Spain" },
-];
 
 interface MultiSelectProps {
   value: string[];
   onChange: (value: string[]) => void;
 }
 
-const MultiSelect: React.FC<MultiSelectProps> = ({ value, onChange }) => {
+const MultiSelectCountry: React.FC<MultiSelectProps> = ({
+  value,
+  onChange,
+}) => {
+  const [options, setOptions] = useState<{ value: string; label: string }[]>(
+    []
+  );
+
+  useEffect(() => {
+    fetch("/countryList.json")
+      .then((response) => response.json())
+      .then((data) => setOptions(data));
+  }, []);
+
   const tagRender: TagRender = (props) => {
     const { label, closable, onClose } = props;
     const onPreventMouseDown = (event: React.MouseEvent<HTMLSpanElement>) => {
@@ -70,4 +76,4 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ value, onChange }) => {
   );
 };
 
-export default MultiSelect;
+export default MultiSelectCountry;

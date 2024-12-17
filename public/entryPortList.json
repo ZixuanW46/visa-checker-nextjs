@@ -1,0 +1,7 @@
+[
+  { "value": "SHA", "label": "Shanghai" },
+  { "value": "BJS", "label": "Beijing" },
+  { "value": "HGH", "label": "Hangzhou" },
+  { "value": "CTU", "label": "Chengdu" },
+  { "value": "WUH", "label": "Wuhan" }
+]
