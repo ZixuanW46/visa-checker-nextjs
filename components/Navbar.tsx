@@ -15,7 +15,7 @@ interface NavbarProps {
 
 const Navbar = ({ tab = "home" }: NavbarProps) => {
   return (
-    <div className="flex justify-between items-center px-8 my-1 h-20 w-full">
+    <div className="flex justify-between items-center px-8 h-20 w-full flex-shrink-0">
       <div className="flex gap-3 min-w-56">
         <Image src={capyLogo} alt="capy logo" width={40} height={40} />
         <p className="text-2xl font-extrabold pt-1">
