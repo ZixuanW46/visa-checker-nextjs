@@ -14,9 +14,9 @@ const NoneFlightNoticeOutbound = () => {
         <AccordionTrigger>I am not taking a flight...</AccordionTrigger>
         <AccordionContent className="space-y-4">
           <span className="block">
-            If you're leaving China through a land border, please enter the{" "}
+            If you&apos;re leaving China through a land border, please enter the{" "}
             <span className="font-bold">neighbouring country or region</span>{" "}
-            you are entering to in the "Flight Destination" field.
+            you are entering to in the &quot;Flight Destination&quot; field.
           </span>
           <span className="block">
             For example, if taking a train from{" "}
@@ -24,7 +24,7 @@ const NoneFlightNoticeOutbound = () => {
             in <span className="font-bold">Hong Kong</span>.
           </span>
           <span className="block">
-            Then in the "Departure Airport" section, simply enter your{" "}
+            Then in the &quot;Departure Airport&quot; section, simply enter your{" "}
             <span className="font-bold">departure port</span>.
           </span>
         </AccordionContent>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import { AntdProvider } from "@/components/providers/AntdProvider";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -19,7 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={manrope.className}>
-      <body>{children}</body>
+      <body>
+        <AntdProvider>{children}</AntdProvider>
+      </body>
     </html>
   );
 }

@@ -41,19 +41,14 @@ export default function TransitAlert() {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle>Taking a transit?</AlertDialogTitle>
-            <AlertDialogDescription className="space-y-4">
-              <span className="block">
-                Please be aware that the{" "}
-                <span className="font-bold">"Flight Origin"</span> is the
-                departure point of your{" "}
-                <span className="font-bold">last flight</span> before entering
-                China.
-              </span>
-              <span className="block">
-                For example, if traveling{" "}
-                <span className="font-bold">UK → Japan → China</span>, then the
-                "Flight Origin" is <span className="font-bold">Japan</span>.
-              </span>
+            <AlertDialogDescription>
+              If you have a layover in another country before reaching China,
+              please select your &quot;final departure point&quot; as the Flight
+              Origin.
+              <br />
+              <br />
+              For example, if your route is &quot;London → Dubai →
+              Beijing&quot;, select London.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
