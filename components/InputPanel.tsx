@@ -10,6 +10,7 @@ import SingleSelectPort from "./SingleSelectPort";
 import { DatePicker } from "./DatePicker";
 import TransitAlertOutbound from "./TransitAlertOutbound";
 import NoneFlightNoticeOutbound from "./NoneFlightNoticeOutbound";
+import { MoreInfo } from "./MoreInfo";
 
 const InputPanel = () => {
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
@@ -91,7 +92,10 @@ const InputPanel = () => {
             <SingleSelectPort value={selectedPort} onChange={setSelectedPort} />
           </div>
           <div className="mt-8">
-            <p className="inputSubtitle">Arrival Date</p>
+            <div className="flex items-center gap-2 mb-2">
+              <p className="font-bold text-base text-black-200">Arrival Date</p>
+              <MoreInfo content="Enter your flight's departure time in China's local time zone." />
+            </div>
             <DatePicker value={selectedDate} onChange={setSelectedDate} />
           </div>
         </div>
@@ -124,7 +128,12 @@ const InputPanel = () => {
             />
           </div>
           <div className="mt-8">
-            <p className="inputSubtitle">Departure Date</p>
+            <div className="flex items-center gap-2 mb-2">
+              <p className="font-bold text-base text-black-200">
+                Departure Date
+              </p>
+              <MoreInfo content="Enter your flight's departure time in China's local time zone." />
+            </div>
             <DatePicker
               value={selectedOutboundDate}
               onChange={setSelectedOutboundDate}
