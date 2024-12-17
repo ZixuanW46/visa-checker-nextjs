@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useState } from "react";
 
-export default function TransitAlert() {
+export default function TransitAlertOutbound() {
   const [isChecked, setIsChecked] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -44,15 +44,15 @@ export default function TransitAlert() {
             <AlertDialogDescription className="space-y-4">
               <span className="block">
                 Please be aware that the{" "}
-                <span className="font-bold">"Flight Origin"</span> is the
-                departure point of your{" "}
-                <span className="font-bold">last flight</span> before entering
-                China.
+                <span className="font-bold">"Flight Destination"</span> is the
+                <span className="font-bold">first landing country</span> of your
+                flight leaving China.
               </span>
               <span className="block">
                 For example, if traveling{" "}
-                <span className="font-bold">UK → Japan → China</span>, then the
-                "Flight Origin" is <span className="font-bold">Japan</span>.
+                <span className="font-bold">China → Japan → UK</span>, then the
+                "Flight Destination" is <span className="font-bold">Japan</span>
+                .
               </span>
             </AlertDialogDescription>
           </AlertDialogHeader>

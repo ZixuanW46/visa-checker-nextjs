@@ -54,6 +54,14 @@ const MultiSelectCountry: React.FC<MultiSelectProps> = ({
     );
   };
 
+  // Modified filter function to only search labels
+  const filterOption = (
+    input: string,
+    option?: { label: string; value: string }
+  ) => {
+    return (option?.label ?? "").toLowerCase().includes(input.toLowerCase());
+  };
+
   return (
     <Select
       mode="multiple"
@@ -61,6 +69,7 @@ const MultiSelectCountry: React.FC<MultiSelectProps> = ({
       showSearch
       value={value}
       onChange={onChange}
+      filterOption={filterOption}
       style={{
         width: "100%",
       }}

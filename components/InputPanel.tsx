@@ -8,6 +8,8 @@ import TransitAlert from "./TransitAlert";
 import NoneFlightNotice from "./NoneFlightNotice";
 import SingleSelectPort from "./SingleSelectPort";
 import { DatePicker } from "./DatePicker";
+import TransitAlertOutbound from "./TransitAlertOutbound";
+import NoneFlightNoticeOutbound from "./NoneFlightNoticeOutbound";
 
 const InputPanel = () => {
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
@@ -31,9 +33,12 @@ const InputPanel = () => {
   const handleSubmit = () => {
     const formData = {
       nationality: selectedCountries,
-      inboundPlan: selectedInbound,
-      port: selectedPort,
-      arrivalDate: selectedDate,
+      inboundOrigin: selectedInbound,
+      inboundPort: selectedPort,
+      inboundDate: selectedDate,
+      outboundDestination: selectedOutbound,
+      outboundPort: selectedOutboundPort,
+      outboundDate: selectedOutboundDate,
     };
 
     // Use this formData to submit to your API
@@ -45,6 +50,9 @@ const InputPanel = () => {
     setSelectedInbound(undefined);
     setSelectedPort(undefined);
     setSelectedDate(undefined);
+    setSelectedOutbound(undefined);
+    setSelectedOutboundPort(undefined);
+    setSelectedOutboundDate(undefined);
   };
 
   return (
@@ -103,10 +111,10 @@ const InputPanel = () => {
             />
           </div>
           <div className="mt-8">
-            <TransitAlert />
+            <TransitAlertOutbound />
           </div>
           <div className="">
-            <NoneFlightNotice />
+            <NoneFlightNoticeOutbound />
           </div>
           <div>
             <p className="inputSubtitle">Departure Airport</p>
