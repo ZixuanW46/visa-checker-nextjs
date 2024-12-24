@@ -1,6 +1,7 @@
 import React from "react";
 import { VisaPolicyContainer } from "./VisaPolicyCard";
 import InteractiveMap from "./InteractiveMap";
+import { regionEligibilityVisaFree } from "./RegionEligibility";
 
 const ContentBox = () => {
   return (
@@ -9,7 +10,7 @@ const ContentBox = () => {
         <VisaPolicyContainer />
       </div>
       <div className="flex-1">
-        <InteractiveMap />
+        <InteractiveMap regionEligibility={regionEligibilityVisaFree} />
       </div>
     </div>
   );

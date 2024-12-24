@@ -10,7 +10,7 @@ const regionEligibilityVisaFree = {
   Qinghai: "ineligible",
   Gansu: "ineligible",
   Ningxia: "ineligible",
-  "Inner Mongol": "ineligible",
+  "Inner Mongol": "eligible",
   Liaoning: "ineligible",
   Jilin: "ineligible",
   Heilongjiang: "ineligible",

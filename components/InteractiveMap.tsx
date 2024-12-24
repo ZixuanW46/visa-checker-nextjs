@@ -2,12 +2,62 @@
 
 import React, { useState, useEffect } from "react";
 import ChinaMap from "./ChinaMap";
+import { regionEligibilityVisaFree } from "./RegionEligibility";
 
-const InteractiveMap = () => {
+interface InteractiveMapProps {
+  regionEligibility: typeof regionEligibilityVisaFree;
+  width?: number;
+  height?: number;
+}
+
+const InteractiveMap = ({
+  regionEligibility,
+  width = 500,
+  height = 500,
+}: InteractiveMapProps) => {
   const [hoveredRegion, setHoveredRegion] = useState<string>("");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
+
+  const eligibilityColor = {
+    eligible: {
+      initialFill: "#98E1F2",
+      hoverFill: "#98E1F2",
+      tooltipMessage: "eligible",
+      selectedFill: "#98E1F2",
+      initialOpacity: "0.5",
+      hoverOpacity: "0.6",
+      selectedOpacity: "0.9",
+    },
+    "partially-eligible": {
+      initialFill: "#F4594A",
+      hoverFill: "#F4594A",
+      tooltipMessage: "partially eligible",
+      selectedFill: "#F4594A",
+      initialOpacity: "0.5",
+      hoverOpacity: "0.6",
+      selectedOpacity: "0.8",
+    },
+    ineligible: {
+      initialFill: "#B2B2B2",
+      hoverFill: "#B2B2B2",
+      tooltipMessage: "ineligible",
+      selectedFill: "#B2B2B2",
+      initialOpacity: "0.6",
+      hoverOpacity: "0.7",
+      selectedOpacity: "0.9",
+    },
+    "not-found": {
+      initialFill: "#FD8613",
+      hoverFill: "#FD8613",
+      tooltipMessage: "region not found",
+      selectedFill: "#FD8613",
+      initialOpacity: "0.3",
+      hoverOpacity: "0.6",
+      selectedOpacity: "0.9",
+    },
+  } as const;
 
   useEffect(() => {
     const handleMouseLeaveWindow = () => {
@@ -50,30 +100,43 @@ const InteractiveMap = () => {
     }
   };
 
-  const getPathProps = (name: string) => ({
-    onMouseEnter: handleMouseEnter,
-    onMouseLeave: handleMouseLeave,
-    onClick: handleClick,
-    name: name,
-    fill:
-      selectedRegion === name
-        ? "#4A90E2"
-        : hoveredPath === name
-        ? "#D95638"
-        : "#FFFFFF",
-    fillOpacity:
-      selectedRegion === name ? "0.6" : hoveredPath === name ? "0.6" : "0.1",
-    stroke: "white",
-    strokeWidth: "1.5",
-    strokeLinejoin: "round" as const,
-  });
+  const getPathProps = (name: string) => {
+    const eligibility = regionEligibility?.[
+      name as keyof typeof regionEligibility
+    ]
+      ? regionEligibility[name as keyof typeof regionEligibility]
+      : "not-found";
+    const colors = eligibilityColor[eligibility];
+
+    return {
+      onMouseEnter: handleMouseEnter,
+      onMouseLeave: handleMouseLeave,
+      onClick: handleClick,
+      name: name,
+      fill:
+        selectedRegion === name
+          ? colors.selectedFill
+          : hoveredPath === name
+          ? colors.hoverFill
+          : colors.initialFill,
+      fillOpacity:
+        selectedRegion === name
+          ? colors.selectedOpacity
+          : hoveredPath === name
+          ? colors.hoverOpacity
+          : colors.initialOpacity,
+      stroke: "white",
+      strokeWidth: "1.5",
+      strokeLinejoin: "round" as const,
+    };
+  };
 
   return (
     <div className="">
       <div>Currently hovering: {hoveredRegion}</div>
 
       <div onMouseMove={handleMouseMove}>
-        <ChinaMap getPathProps={getPathProps} />
+        <ChinaMap getPathProps={getPathProps} width={width} height={height} />
       </div>
 
       {hoveredRegion && (
@@ -91,7 +154,16 @@ const InteractiveMap = () => {
             zIndex: 1000,
           }}
         >
-          {hoveredRegion}
+          <div>{hoveredRegion}</div>
+          <div>
+            {
+              eligibilityColor[
+                regionEligibility?.[
+                  hoveredRegion as keyof typeof regionEligibility
+                ] ?? "ineligible"
+              ].tooltipMessage
+            }
+          </div>
         </div>
       )}
     </div>

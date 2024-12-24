@@ -10,18 +10,25 @@ interface PathProps {
   strokeLinejoin: "round";
 }
 
+interface ChinaMapProps {
+  getPathProps: (name: string) => PathProps;
+  width?: number;
+  height?: number;
+}
+
 const ChinaMap = ({
   getPathProps,
-}: {
-  getPathProps: (name: string) => PathProps;
-}) => {
+  width = 800,
+  height = 800,
+}: ChinaMapProps) => {
   return (
     <svg
-      width="800"
-      height="800"
+      width={width}
+      height={height}
       viewBox="0 0 512 425"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="xMidYMid meet"
     >
       <image href="/map_landscape.png" width="512" height="425" />
 
