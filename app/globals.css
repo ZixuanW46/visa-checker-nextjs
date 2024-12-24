@@ -131,17 +131,14 @@
   font-weight: 700 !important;
 }
 
-.ant-select-item-option-selected {
-  background-color: #fcd36a !important;
-}
-
 .ant-select-item-option-active {
-  background-color: rgba(252, 211, 106, 0.5) !important;
+  background-color: rgba(253, 134, 19, 0.5) !important;
 }
 
 /* Style for the selected option text */
 .ant-select-item-option-selected .ant-select-item-option-content {
-  color: #000000 !important;
+  background-color: #fd8613 !important;
+  color: #ffffff !important;
   font-weight: 700 !important;
 }
 

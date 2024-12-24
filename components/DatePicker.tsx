@@ -48,8 +48,7 @@ export function DatePicker({ value, onChange }: DatePickerProps) {
           onSelect={onChange}
           initialFocus
           classNames={{
-            day_selected:
-              "bg-yellow hover:bg-yellow focus:bg-yellow text-white",
+            day_selected: "bg-logo hover:bg-logo focus:bg-logo text-white",
           }}
         />
       </PopoverContent>

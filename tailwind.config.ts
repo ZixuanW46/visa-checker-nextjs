@@ -13,6 +13,7 @@ export default {
         custom: "1100px",
       },
       colors: {
+        logo: "#FD8613",
         yellow: "#FCD36A",
         red: "#D95638",
         black: {

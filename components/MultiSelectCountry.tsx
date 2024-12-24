@@ -33,7 +33,7 @@ const MultiSelectCountry: React.FC<MultiSelectProps> = ({
     };
     return (
       <Tag
-        color="#FCD36A"
+        color="#FD8613"
         onMouseDown={onPreventMouseDown}
         closable={closable}
         onClose={onClose}
@@ -42,7 +42,7 @@ const MultiSelectCountry: React.FC<MultiSelectProps> = ({
           borderRadius: "10px",
           padding: "8px 10px",
           marginTop: "9px",
-          color: "#000000",
+          color: "#FFFFFF",
           fontSize: "1rem",
           fontWeight: "700",
           display: "flex",

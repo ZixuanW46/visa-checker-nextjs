@@ -52,7 +52,9 @@ export default function TransitAlert() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogAction>Understood!</AlertDialogAction>
+            <AlertDialogAction className="h-12 rounded-xl text-sm">
+              Understood!
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
