@@ -22,7 +22,9 @@ export default function RootLayout({
     <html lang="en" className={manrope.className}>
       <body>
         <NuqsAdapter>
-          <AntdProvider>{children}</AntdProvider>
+          <AntdProvider>
+            <main className="max-w-[1440px] mx-auto">{children}</main>
+          </AntdProvider>
         </NuqsAdapter>
       </body>
     </html>

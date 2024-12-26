@@ -14,7 +14,7 @@ interface AllPortsCardProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   provinceName: string;
-  ports: readonly string[];
+  ports: string;
 }
 
 const AllPortsCard = ({
@@ -27,14 +27,38 @@ const AllPortsCard = ({
     <AlertDialog open={isOpen} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Ports in {provinceName}</AlertDialogTitle>
-          <AlertDialogDescription className="text-base">
-            {ports.join(", ")}
-          </AlertDialogDescription>
+          <AlertDialogTitle>
+            Ports of Entry/Exit in{" "}
+            <span className="font-extrabold text-logo">{provinceName}</span>
+          </AlertDialogTitle>
+          {ports.includes(":") ? (
+            <>
+              <AlertDialogDescription className="text-sm">
+                {ports.split(":")[0]}:
+              </AlertDialogDescription>
+              <ul className="list-disc pl-6 mt-2">
+                {ports
+                  .split(":")[1]
+                  .split(",")
+                  .map((port, index) => (
+                    <li
+                      key={index}
+                      className="text-sm font-semibold text-gray-100"
+                    >
+                      {port.trim()}
+                    </li>
+                  ))}
+              </ul>
+            </>
+          ) : (
+            <AlertDialogDescription className="text-base">
+              {ports}
+            </AlertDialogDescription>
+          )}
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogAction className="h-12 rounded-xl text-sm">
-            Close
+          <AlertDialogAction className="h-10 rounded-xl text-sm bg-themePrimary hover:bg-black">
+            Got it
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
@@ -59,14 +83,17 @@ const AllScopeCard = ({
     <AlertDialog open={isOpen} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Travel Scope in {provinceName}</AlertDialogTitle>
-          <AlertDialogDescription className="text-base">
+          <AlertDialogTitle>
+            Travel Scope in{" "}
+            <span className="font-extrabold text-logo">{provinceName}</span>
+          </AlertDialogTitle>
+          <AlertDialogDescription className="text-sm">
             {scope}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogAction className="h-12 rounded-xl text-sm">
-            Close
+          <AlertDialogAction className="h-10 rounded-xl text-sm bg-themePrimary hover:bg-black">
+            Got it
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

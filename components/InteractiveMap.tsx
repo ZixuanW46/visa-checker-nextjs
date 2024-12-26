@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import ChinaMap from "./ChinaMap";
+import { Plus, Minus, RotateCcw } from "lucide-react";
+import { Button } from "./ui/button";
 
 interface InteractiveMapProps {
   width: string;
@@ -19,14 +21,16 @@ interface InteractiveMapProps {
 
 const InteractiveMap = ({
   regionEligibility,
-  width = "500px",
-  height = "500px",
   onProvinceHover,
   onProvinceSelect,
 }: InteractiveMapProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
+  const [zoom, setZoom] = useState(1);
+  const [isPanning, setIsPanning] = useState(false);
+  const [panPosition, setPanPosition] = useState({ x: 0, y: 0 });
+  const [startPanPosition, setStartPanPosition] = useState({ x: 0, y: 0 });
 
   const eligibilityColor = {
     eligible: {
@@ -94,9 +98,28 @@ const InteractiveMap = ({
     setHoveredPath(null);
   };
 
+  const handleMouseDown = (event: React.MouseEvent) => {
+    setIsPanning(true);
+    setStartPanPosition({
+      x: event.clientX - panPosition.x,
+      y: event.clientY - panPosition.y,
+    });
+  };
+
+  const handleMouseUp = () => {
+    setIsPanning(false);
+  };
+
   const handleMouseMove = (event: React.MouseEvent) => {
     if (hoveredPath) {
       setMousePosition({ x: event.clientX, y: event.clientY });
+    }
+
+    if (isPanning) {
+      setPanPosition({
+        x: event.clientX - startPanPosition.x,
+        y: event.clientY - startPanPosition.y,
+      });
     }
   };
 
@@ -162,10 +185,75 @@ const InteractiveMap = ({
     };
   };
 
+  const handleZoomIn = () => {
+    setZoom((prev) => Math.min(prev + 0.2, 2));
+  };
+
+  const handleZoomOut = () => {
+    setZoom((prev) => Math.max(prev - 0.2, 0.5));
+  };
+
+  const handleReset = () => {
+    setZoom(1);
+    setPanPosition({ x: 0, y: 0 });
+  };
+
+  useEffect(() => {
+    const handleGlobalMouseUp = () => {
+      setIsPanning(false);
+    };
+
+    window.addEventListener("mouseup", handleGlobalMouseUp);
+    return () => {
+      window.removeEventListener("mouseup", handleGlobalMouseUp);
+    };
+  }, []);
+
   return (
-    <div className="w-full">
-      <div onMouseMove={handleMouseMove} className="w-full">
-        <ChinaMap getPathProps={getPathProps} width={width} height={height} />
+    <div className="w-full h-full relative overflow-hidden">
+      <div className="absolute left-4 top-4 flex flex-col gap-4 z-10 items-center">
+        <div className="flex flex-col bg-white rounded-full shadow-md items-center">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={handleZoomIn}
+            className="rounded-t-full hover:bg-gray-200 h-10 w-12 group"
+          >
+            <Plus className="h-5 w-5 group-hover:text-white mt-1" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={handleZoomOut}
+            className="rounded-b-full hover:bg-gray-200 h-10 w-12 group"
+          >
+            <Minus className="h-5 w-5 group-hover:text-white mb-1" />
+          </Button>
+        </div>
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={handleReset}
+          className="bg-themePrimary hover:bg-black group rounded-full h-[3.2rem] w-[3.2rem]"
+        >
+          <RotateCcw className="h-5 w-5 text-white" />
+        </Button>
+      </div>
+
+      <div
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        className="w-full h-full cursor-grab active:cursor-grabbing"
+        style={{
+          transform: `scale(${zoom}) translate(${panPosition.x / zoom}px, ${
+            panPosition.y / zoom
+          }px)`,
+          transformOrigin: "center",
+          transition: isPanning ? "none" : "transform 0.2s ease-out",
+        }}
+      >
+        <ChinaMap getPathProps={getPathProps} width="100%" height="100%" />
       </div>
 
       {hoveredPath && (

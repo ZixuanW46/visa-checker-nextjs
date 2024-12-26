@@ -39,22 +39,28 @@ const ContentBox = () => {
       <div className="flex flex-col gap-4 w-2/5 max-w-[27rem] overflow-y-auto max-h-[calc(100vh-7rem)]">
         <VisaPolicyContainer />
       </div>
-      <div className="flex-1 min-w-0 flex flex-col items-center justify-between">
-        <div></div>
-        <InteractiveMap
-          width="100%"
-          height="100%"
-          regionEligibility={getRegionEligibility()}
-          onProvinceHover={(province) =>
-            setProvinceState((prev) => ({ ...prev, hoveredProvince: province }))
-          }
-          onProvinceSelect={(province) =>
-            setProvinceState((prev) => ({
-              ...prev,
-              selectedProvince: province,
-            }))
-          }
-        />
+      <div className="flex-1 min-w-0 flex flex-col items-center max-h-[calc(100vh-7rem)] overflow-y-auto">
+        <div className="w-full h-[calc(100%-120px)] relative mb-8">
+          <div className="absolute inset-0">
+            <InteractiveMap
+              width="100%"
+              height="100%"
+              regionEligibility={getRegionEligibility()}
+              onProvinceHover={(province) =>
+                setProvinceState((prev) => ({
+                  ...prev,
+                  hoveredProvince: province,
+                }))
+              }
+              onProvinceSelect={(province) =>
+                setProvinceState((prev) => ({
+                  ...prev,
+                  selectedProvince: province,
+                }))
+              }
+            />
+          </div>
+        </div>
         <ProvinceInfoCard
           hoveredProvince={provinceState.hoveredProvince}
           selectedProvince={provinceState.selectedProvince}

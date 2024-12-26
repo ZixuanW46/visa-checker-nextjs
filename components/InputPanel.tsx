@@ -209,11 +209,14 @@ const InputPanel = () => {
         <div className="flex justify-between pt-3">
           <button
             onClick={handleClearAll}
-            className="text-black-100 underline font-semibold text-base rounded-md active:text-black-200 hover:text-yellow"
+            className="text-black-100 underline font-semibold text-base rounded-md active:text-black-200 hover:text-logo"
           >
             Clear All
           </button>
-          <Button onClick={handleSubmit} className="h-12 rounded-xl text-base">
+          <Button
+            onClick={handleSubmit}
+            className="h-12 rounded-xl text-base bg-themePrimary hover:bg-black"
+          >
             Check
           </Button>
         </div>
