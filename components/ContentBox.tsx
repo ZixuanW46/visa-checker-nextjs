@@ -43,8 +43,6 @@ const ContentBox = () => {
         <div className="w-full h-[calc(100%-120px)] relative mb-8">
           <div className="absolute inset-0">
             <InteractiveMap
-              width="100%"
-              height="100%"
               regionEligibility={getRegionEligibility()}
               onProvinceHover={(province) =>
                 setProvinceState((prev) => ({

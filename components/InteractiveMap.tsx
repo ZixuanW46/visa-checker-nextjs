@@ -6,8 +6,6 @@ import { Plus, Minus, RotateCcw } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface InteractiveMapProps {
-  width: string;
-  height: string;
   regionEligibility?: {
     readonly [key: string]: {
       eligibility: "eligible" | "partially-eligible" | "ineligible";
