@@ -11,27 +11,60 @@ import { DatePicker } from "./DatePicker";
 import TransitAlertOutbound from "./TransitAlertOutbound";
 import NoneFlightNoticeOutbound from "./NoneFlightNoticeOutbound";
 import { MoreInfo } from "./MoreInfo";
+import {
+  parseAsIsoDate,
+  useQueryState,
+  parseAsArrayOf,
+  parseAsString,
+} from "nuqs";
 
 const InputPanel = () => {
-  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
+  // Replace URL query state setters with full query state handlers
+  const [nationalityQuery, setNationalityQuery] = useQueryState(
+    "nationality",
+    parseAsArrayOf(parseAsString)
+  );
+  const [inboundQuery, setInboundQuery] = useQueryState("inboundOrigin");
+  const [portQuery, setPortQuery] = useQueryState("inboundPort");
+  const [dateQuery, setDateQuery] = useQueryState(
+    "inboundDate",
+    parseAsIsoDate
+  );
+  const [outboundQuery, setOutboundQuery] = useQueryState(
+    "outboundDestination"
+  );
+  const [outboundPortQuery, setOutboundPortQuery] =
+    useQueryState("outboundPort");
+  const [outboundDateQuery, setOutboundDateQuery] = useQueryState(
+    "outboundDate",
+    parseAsIsoDate
+  );
+
+  // Initialize local state with URL query parameters
+  const [selectedCountries, setSelectedCountries] = useState<string[]>(
+    nationalityQuery || []
+  );
   const [selectedInbound, setSelectedInbound] = useState<string | undefined>(
-    undefined
+    inboundQuery || undefined
   );
   const [selectedPort, setSelectedPort] = useState<string | undefined>(
-    undefined
+    portQuery || undefined
   );
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const [selectedDate, setSelectedDate] = useState<Date | undefined>(
+    dateQuery || undefined
+  );
   const [selectedOutbound, setSelectedOutbound] = useState<string | undefined>(
-    undefined
+    outboundQuery || undefined
   );
   const [selectedOutboundPort, setSelectedOutboundPort] = useState<
     string | undefined
-  >(undefined);
+  >(outboundPortQuery || undefined);
   const [selectedOutboundDate, setSelectedOutboundDate] = useState<
     Date | undefined
-  >(undefined);
+  >(outboundDateQuery || undefined);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    // Prepare form data for backend
     const formData = {
       nationality: selectedCountries,
       inboundOrigin: selectedInbound,
@@ -42,11 +75,33 @@ const InputPanel = () => {
       outboundDate: selectedOutboundDate,
     };
 
-    // Use this formData to submit to your API
-    console.log("Form submitted:", formData);
+    // Update URL parameters
+    setNationalityQuery(selectedCountries.length ? selectedCountries : null);
+    setInboundQuery(selectedInbound || null);
+    setPortQuery(selectedPort || null);
+    setDateQuery(selectedDate || null);
+    setOutboundQuery(selectedOutbound || null);
+    setOutboundPortQuery(selectedOutboundPort || null);
+    setOutboundDateQuery(selectedOutboundDate || null);
+
+    try {
+      // Send analytics data to backend
+      await fetch("/api/search-analytics", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      console.log("Form submitted:", formData);
+    } catch (error) {
+      console.error("Failed to send analytics:", error);
+    }
   };
 
   const handleClearAll = () => {
+    // Clear local state
     setSelectedCountries([]);
     setSelectedInbound(undefined);
     setSelectedPort(undefined);
@@ -54,6 +109,15 @@ const InputPanel = () => {
     setSelectedOutbound(undefined);
     setSelectedOutboundPort(undefined);
     setSelectedOutboundDate(undefined);
+
+    // Clear URL parameters
+    setNationalityQuery(null);
+    setInboundQuery(null);
+    setPortQuery(null);
+    setDateQuery(null);
+    setOutboundQuery(null);
+    setOutboundPortQuery(null);
+    setOutboundDateQuery(null);
   };
 
   return (

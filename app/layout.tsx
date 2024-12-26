@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import "./globals.css";
 import { AntdProvider } from "@/components/providers/AntdProvider";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -20,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={manrope.className}>
       <body>
-        <AntdProvider>{children}</AntdProvider>
+        <NuqsAdapter>
+          <AntdProvider>{children}</AntdProvider>
+        </NuqsAdapter>
       </body>
     </html>
   );

@@ -136,8 +136,11 @@
 }
 
 /* Style for the selected option text */
-.ant-select-item-option-selected .ant-select-item-option-content {
+.ant-select-item-option-selected {
   background-color: #fd8613 !important;
+}
+
+.ant-select-item-option-selected .ant-select-item-option-content {
   color: #ffffff !important;
   font-weight: 700 !important;
 }

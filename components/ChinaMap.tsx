@@ -12,8 +12,8 @@ interface PathProps {
 
 interface ChinaMapProps {
   getPathProps: (name: string) => PathProps;
-  width?: number;
-  height?: number;
+  width?: number | string; // Update type to allow string
+  height?: number | string; // Update type to allow string
 }
 
 const ChinaMap = ({
@@ -29,6 +29,7 @@ const ChinaMap = ({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid meet"
+      style={{ width: "100%", height: "100%" }} // Add this line
     >
       <image href="/map_landscape.png" width="512" height="425" />
 
