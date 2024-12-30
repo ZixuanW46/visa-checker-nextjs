@@ -269,16 +269,15 @@ const InteractiveMap = ({
             zIndex: 1000,
           }}
         >
-          <div>{hoveredPath}</div>
-          {regionEligibility && (
-            <div>
-              {
+          <div>
+            {hoveredPath}
+            {regionEligibility &&
+              ` [${
                 eligibilityColor[
                   regionEligibility[hoveredPath]?.eligibility ?? "not-found"
                 ].tooltipMessage
-              }
-            </div>
-          )}
+              }]`}
+          </div>
         </div>
       )}
     </div>

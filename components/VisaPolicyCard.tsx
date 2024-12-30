@@ -90,7 +90,7 @@ interface VisaPolicyCardProps {
 
 const VisaPolicyCard = ({
   children,
-  status = "ineligible",
+  status = "eligible",
   title = "Visa Free Entry",
   value,
   currentValue,
@@ -316,9 +316,9 @@ const VisaPolicyTravelScope = () => {
         through the map to explore.
       </p>
       <p className="text-xs font-normal">
-        Additionally, you are only allowed to enter and exit through designated
-        ports. Your entry and exit ports don’t have to be the same. Click on the
-        provinces to see the designated ports.
+        Additionally, you are only allowed to enter and exit China through
+        designated ports. Your entry and exit ports don’t have to be the same.
+        Click on the provinces to see the designated ports.
       </p>
     </div>
   );
@@ -333,12 +333,14 @@ const VisaPolicyCardVisaFree = ({
   const searchParams = useSearchParams();
   const nationalities = searchParams.get("nationality")?.split(",") || [];
 
-  // Check if any nationality is eligible
-  const hasEligibleNationality = nationalities.some((code) =>
-    countryEligibilityVisaFree.includes(
-      code as (typeof countryEligibilityVisaFree)[number]
-    )
-  );
+  // Always eligible if no nationalities selected
+  const hasEligibleNationality =
+    nationalities.length === 0 ||
+    nationalities.some((code) =>
+      countryEligibilityVisaFree.includes(
+        code as (typeof countryEligibilityVisaFree)[number]
+      )
+    );
 
   return (
     <VisaPolicyCard
@@ -367,12 +369,14 @@ const VisaPolicyCard240 = ({
   const searchParams = useSearchParams();
   const nationalities = searchParams.get("nationality")?.split(",") || [];
 
-  // Check if any nationality is eligible
-  const hasEligibleNationality = nationalities.some((code) =>
-    countryEligibility240HourVisa.includes(
-      code as (typeof countryEligibility240HourVisa)[number]
-    )
-  );
+  // Always eligible if no nationalities selected
+  const hasEligibleNationality =
+    nationalities.length === 0 ||
+    nationalities.some((code) =>
+      countryEligibility240HourVisa.includes(
+        code as (typeof countryEligibility240HourVisa)[number]
+      )
+    );
 
   return (
     <VisaPolicyCard

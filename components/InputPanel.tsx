@@ -39,6 +39,7 @@ const InputPanel = () => {
     "outboundDate",
     parseAsIsoDate
   );
+  const [, setPolicyQuery] = useQueryState("policy");
 
   // Initialize local state with URL query parameters
   const [selectedCountries, setSelectedCountries] = useState<string[]>(
@@ -83,6 +84,7 @@ const InputPanel = () => {
     setOutboundQuery(selectedOutbound || null);
     setOutboundPortQuery(selectedOutboundPort || null);
     setOutboundDateQuery(selectedOutboundDate || null);
+    setPolicyQuery("visa-free");
 
     try {
       // Send analytics data to backend
