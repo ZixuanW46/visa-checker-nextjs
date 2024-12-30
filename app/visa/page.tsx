@@ -1,14 +1,40 @@
 import React, { Suspense } from "react";
 import InputPanel from "@/components/InputPanel";
 import ContentBox from "@/components/ContentBox";
-
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import ModifyInputButton from "@/components/ModifyInputButton";
 const Page = () => {
   return (
     <>
       <div className="flex flex-1 px-8 pb-5 w-full max-h-[calc(100vh-5rem)] gap-4">
-        <Suspense fallback={<InputPanelSkeleton />}>
-          <InputPanel />
-        </Suspense>
+        <div className="hidden custom:block ">
+          <Suspense fallback={<InputPanelSkeleton />}>
+            <InputPanel foldable={false} />
+          </Suspense>
+        </div>
+
+        <div className="custom:hidden absolute left-12 bottom-8 z-10 w-[500px]">
+          <Sheet>
+            <SheetTrigger asChild>
+              <ModifyInputButton />
+            </SheetTrigger>
+            <SheetContent
+              side="left"
+              className="p-0 bg-white h-full sm:max-w-[500px]"
+            >
+              <SheetTitle className="sr-only">Input Panel</SheetTitle>
+              <Suspense fallback={<InputPanelSkeleton />}>
+                <InputPanel foldable={true} />
+              </Suspense>
+            </SheetContent>
+          </Sheet>
+        </div>
+
         <Suspense fallback={<ContentBoxSkeleton />}>
           <ContentBox />
         </Suspense>

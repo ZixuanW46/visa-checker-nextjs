@@ -18,7 +18,7 @@ import {
   parseAsString,
 } from "nuqs";
 
-const InputPanel = () => {
+const InputPanel = ({ foldable = false }: { foldable: boolean }) => {
   // Replace URL query state setters with full query state handlers
   const [nationalityQuery, setNationalityQuery] = useQueryState(
     "nationality",
@@ -96,6 +96,14 @@ const InputPanel = () => {
         body: JSON.stringify(formData),
       });
 
+      // Updated selector to match the Sheet close button
+      if (foldable) {
+        const closeButton = document.querySelector(
+          'button[data-state="open"]'
+        ) as HTMLButtonElement;
+        closeButton?.click();
+      }
+
       console.log("Form submitted:", formData);
     } catch (error) {
       console.error("Failed to send analytics:", error);
@@ -123,7 +131,13 @@ const InputPanel = () => {
   };
 
   return (
-    <div className="w-96 min-w-56 max-w-96 flex flex-col overflow-y-auto pr-4">
+    <div
+      className={` min-w-56 flex flex-col overflow-y-auto pr-4 ${
+        foldable
+          ? "h-[calc(100vh)] pl-8 pr-10 pt-8 w-[500px]"
+          : " w-96 h-[calc(100vh-5rem)] max-w-96"
+      }`}
+    >
       <div id="input-section" className="w-full flex-1">
         <div id="section-1" className="w-full">
           <p className="inputTitle">Nationality</p>
