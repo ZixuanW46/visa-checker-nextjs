@@ -11,6 +11,7 @@ export default {
     extend: {
       screens: {
         custom: "1100px",
+        customPlus: "1280px",
       },
       colors: {
         logo: "#FD8613",

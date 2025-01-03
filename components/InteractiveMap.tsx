@@ -28,24 +28,30 @@ const InteractiveMap = ({
   const [zoom, setZoom] = useState(1);
   const [isPanning, setIsPanning] = useState(false);
   const [panPosition, setPanPosition] = useState({ x: 0, y: 0 });
+
   const [startPanPosition, setStartPanPosition] = useState({ x: 0, y: 0 });
+  const [hoveredLegendType, setHoveredLegendType] = useState<string | null>(
+    null
+  );
+  const [touchDistance, setTouchDistance] = useState<number | null>(null);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const eligibilityColor = {
     eligible: {
-      initialFill: "#FFFFFF",
+      initialFill: "#FD8613",
       hoverFill: "#FD8613",
       tooltipMessage: "eligible",
       selectedFill: "#FD8613",
-      initialOpacity: "0.2",
-      hoverOpacity: "0.5",
+      initialOpacity: "0.0",
+      hoverOpacity: "0.60",
       selectedOpacity: "0.9",
     },
     "partially-eligible": {
-      initialFill: "#F4594A",
-      hoverFill: "#F4594A",
+      initialFill: "#4DBDBD",
+      hoverFill: "#4DBDBD",
       tooltipMessage: "partially eligible",
-      selectedFill: "#F4594A",
-      initialOpacity: "0.4",
+      selectedFill: "#4DBDBD",
+      initialOpacity: "0.5",
       hoverOpacity: "0.6",
       selectedOpacity: "0.8",
     },
@@ -115,13 +121,15 @@ const InteractiveMap = ({
 
     if (isPanning) {
       setPanPosition({
-        x: event.clientX - startPanPosition.x,
-        y: event.clientY - startPanPosition.y,
+        x: (event.clientX - startPanPosition.x) * zoom,
+        y: (event.clientY - startPanPosition.y) * zoom,
       });
     }
   };
 
-  const handleClick = (event: React.MouseEvent<SVGPathElement>) => {
+  const handleClick = (
+    event: React.MouseEvent<SVGPathElement> | React.TouchEvent<SVGPathElement>
+  ) => {
     const target = event.currentTarget;
     const name = target.getAttribute("name");
     if (name) {
@@ -137,6 +145,7 @@ const InteractiveMap = ({
         onMouseEnter: handleMouseEnter,
         onMouseLeave: handleMouseLeave,
         onClick: handleClick,
+        onTouchEnd: handleClick,
         name: name,
         fill:
           selectedPath === name
@@ -147,7 +156,9 @@ const InteractiveMap = ({
         fillOpacity:
           selectedPath === name
             ? colors.selectedOpacity
-            : hoveredPath === name
+            : hoveredPath === name ||
+              (hoveredLegendType === "eligible" &&
+                colors.tooltipMessage === "eligible")
             ? colors.hoverOpacity
             : colors.initialOpacity,
         stroke: "white",
@@ -164,6 +175,7 @@ const InteractiveMap = ({
       onMouseEnter: handleMouseEnter,
       onMouseLeave: handleMouseLeave,
       onClick: handleClick,
+      onTouchEnd: handleClick,
       name: name,
       fill:
         selectedPath === name
@@ -174,8 +186,8 @@ const InteractiveMap = ({
       fillOpacity:
         selectedPath === name
           ? colors.selectedOpacity
-          : hoveredPath === name
-          ? colors.hoverOpacity
+          : hoveredPath === name || hoveredLegendType === eligibilityStatus
+          ? colors.selectedOpacity
           : colors.initialOpacity,
       stroke: "white",
       strokeWidth: "1.5",
@@ -207,15 +219,108 @@ const InteractiveMap = ({
     };
   }, []);
 
+  const LegendItem = ({
+    type,
+    label,
+  }: {
+    type: keyof typeof eligibilityColor;
+    label: string;
+  }) => (
+    <div
+      className="flex items-center gap-2 cursor-pointer"
+      onMouseEnter={() => !isTouchDevice && setHoveredLegendType(type)}
+      onMouseLeave={() => !isTouchDevice && setHoveredLegendType(null)}
+      onClick={() => {
+        if (isTouchDevice) {
+          setHoveredLegendType(hoveredLegendType === type ? null : type);
+        }
+      }}
+    >
+      <div
+        className="w-3 h-3 rounded-full transition-all duration-200"
+        style={{
+          backgroundColor:
+            type === "eligible"
+              ? hoveredLegendType === type
+                ? eligibilityColor[type].initialFill
+                : "#B2DDAA"
+              : eligibilityColor[type].initialFill,
+          opacity: hoveredLegendType === type ? 0.8 : 0.6,
+          transform: hoveredLegendType === type ? "scale(1.3)" : "scale(1)",
+        }}
+      />
+      <span
+        className="text-xs transition-all duration-200"
+        style={{
+          fontWeight: hoveredLegendType === type ? 600 : 400,
+          transform: hoveredLegendType === type ? "scale(1.1)" : "scale(1)",
+        }}
+      >
+        {label}
+      </span>
+    </div>
+  );
+
+  const getTouchDistance = (touch1: React.Touch, touch2: React.Touch) => {
+    const dx = touch1.clientX - touch2.clientX;
+    const dy = touch1.clientY - touch2.clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+
+    setHoveredLegendType(null);
+
+    if (e.touches.length === 2) {
+      setTouchDistance(getTouchDistance(e.touches[0], e.touches[1]));
+    } else if (e.touches.length === 1) {
+      setIsPanning(true);
+      setStartPanPosition({
+        x: e.touches[0].clientX - panPosition.x,
+        y: e.touches[0].clientY - panPosition.y,
+      });
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    e.preventDefault();
+
+    if (e.touches.length === 2) {
+      const newDistance = getTouchDistance(e.touches[0], e.touches[1]);
+
+      if (touchDistance !== null) {
+        const scale = newDistance / touchDistance;
+        const newZoom = Math.min(Math.max(zoom * scale, 0.5), 2);
+        setZoom(newZoom);
+        setTouchDistance(newDistance);
+      }
+    } else if (e.touches.length === 1 && isPanning) {
+      setPanPosition({
+        x: e.touches[0].clientX - startPanPosition.x,
+        y: e.touches[0].clientY - startPanPosition.y,
+      });
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsPanning(false);
+    setTouchDistance(null);
+  };
+
+  useEffect(() => {
+    setIsTouchDevice("ontouchstart" in window);
+  }, []);
+
   return (
-    <div className="w-full h-full relative overflow-hidden">
+    <div className="w-full h-full relative overflow-hidden" tabIndex={-1}>
       <div className="absolute left-4 top-4 flex flex-col gap-4 z-10 items-center">
         <div className="flex flex-col bg-white rounded-full shadow-md items-center">
           <Button
             variant="ghost"
             size="icon"
             onClick={handleZoomIn}
-            className="rounded-t-full hover:bg-gray-200 h-10 w-12 group"
+            className="rounded-t-full hover:bg-gray-200 h-10 w-12 group md:flex hidden"
           >
             <Plus className="h-5 w-5 group-hover:text-white mt-1" />
           </Button>
@@ -223,7 +328,7 @@ const InteractiveMap = ({
             variant="ghost"
             size="icon"
             onClick={handleZoomOut}
-            className="rounded-b-full hover:bg-gray-200 h-10 w-12 group"
+            className="rounded-b-full hover:bg-gray-200 h-10 w-12 group md:flex hidden"
           >
             <Minus className="h-5 w-5 group-hover:text-white mb-1" />
           </Button>
@@ -242,16 +347,28 @@ const InteractiveMap = ({
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
-        className="w-full h-full cursor-grab active:cursor-grabbing"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        className="w-full h-full cursor-grab active:cursor-grabbing mt-[-30%] md:mt-10"
         style={{
           transform: `scale(${zoom}) translate(${panPosition.x / zoom}px, ${
             panPosition.y / zoom
           }px)`,
-          transformOrigin: "center",
+          transformOrigin: "",
           transition: isPanning ? "none" : "transform 0.2s ease-out",
+          touchAction: "none",
         }}
       >
         <ChinaMap getPathProps={getPathProps} width="100%" height="100%" />
+      </div>
+
+      <div className="absolute left-4 top-[48%] md:top-auto md:bottom-4 p-4 z-10">
+        <div className="flex flex-col gap-2">
+          <LegendItem type="eligible" label="Eligible" />
+          <LegendItem type="partially-eligible" label="Partially Eligible" />
+          <LegendItem type="ineligible" label="Ineligible" />
+        </div>
       </div>
 
       {hoveredPath && (

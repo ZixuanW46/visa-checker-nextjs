@@ -2,7 +2,7 @@ import React from "react";
 
 const NavbarUser = () => {
   return (
-    <div className="custom:p-0 p-2 ring-1 ring-gray-300 custom:ring-0 flex items-center gap-4 rounded-full mx-2">
+    <div className="hidden md:flex custom:p-0 p-2 ring-1 ring-gray-300 custom:ring-0 items-center gap-4 rounded-full mx-2">
       <div className="group cursor-pointer pl-2">
         <svg
           className="custom:hidden"

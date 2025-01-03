@@ -12,34 +12,56 @@ import { Inter } from "next/font/google";
 
 interface NavbarProps {
   tab?: "home" | "visa" | "payment" | "internet" | "transportation";
+  className?: string;
 }
 
 const inter = Inter({
   subsets: ["latin"],
 });
 
-const Navbar = ({ tab = "home" }: NavbarProps) => {
+const Navbar = ({ className, tab = "home" }: NavbarProps) => {
   return (
-    <div className="flex justify-between items-center px-8 h-20 w-full flex-shrink-0">
-      <div className="flex gap-3 min-w-56 items-center">
-        <Image src={capyLogo} alt="capy logo" width={25} height={25} />
+    <div
+      className={`flex justify-between items-center px-3 md:px-8 h-[4rem] md:h-20 w-full flex-shrink-0 border-t md:border-t-0 border-gray-200 ${className}`}
+    >
+      <div className="flex gap-3 md:min-w-56 items-center">
+        <Image
+          src={capyLogo}
+          alt="capy logo"
+          width={22}
+          height={22}
+          className="md:w-[25px] md:h-[25px]"
+        />
         <p
-          className={`text-2xl font-extrabold pt-1 text-logo ${inter.className}`}
+          className={`text-lg md:text-2xl font-extrabold pt-1 text-logo ${inter.className}`}
         >
-          CAPY <span className="font-medium text-black">China 101</span>
+          <span className="hidden md:inline">CAPY</span>{" "}
+          <span className="font-medium text-black">China 101</span>
         </p>
       </div>
-      <div className="hidden custom:flex gap-10">
+      <div className="flex md:hidden custom:flex gap-2 md:gap-3">
         <NavbarTab
           icon={
-            <Image src={icon_home} alt="home icon" width={20} height={20} />
+            <Image
+              src={icon_home}
+              alt="home icon"
+              width={15}
+              height={15}
+              className="md:w-[20px] md:h-[20px]"
+            />
           }
           name="Home"
           active={tab === "home"}
         />
         <NavbarTab
           icon={
-            <Image src={icon_visa} alt="visa icon" width={20} height={20} />
+            <Image
+              src={icon_visa}
+              alt="visa icon"
+              width={15}
+              height={15}
+              className="md:w-[20px] md:h-[20px]"
+            />
           }
           name="Visa"
           active={tab === "visa"}
@@ -49,8 +71,9 @@ const Navbar = ({ tab = "home" }: NavbarProps) => {
             <Image
               src={icon_payment}
               alt="payment icon"
-              width={20}
-              height={20}
+              width={15}
+              height={15}
+              className="md:w-[20px] md:h-[20px]"
             />
           }
           name="Payment"
@@ -61,8 +84,9 @@ const Navbar = ({ tab = "home" }: NavbarProps) => {
             <Image
               src={icon_internet}
               alt="internet icon"
-              width={20}
-              height={20}
+              width={15}
+              height={15}
+              className="md:w-[20px] md:h-[20px]"
             />
           }
           name="Internet"
@@ -73,8 +97,9 @@ const Navbar = ({ tab = "home" }: NavbarProps) => {
             <Image
               src={icon_transportation}
               alt="transportation icon"
-              width={20}
-              height={20}
+              width={15}
+              height={15}
+              className="md:w-[20px] md:h-[20px]"
             />
           }
           name="Transportation"

@@ -6,6 +6,7 @@ import {
 } from "./RegionEligibility";
 import { useSearchParams } from "next/navigation";
 import { AllPortsCard, AllScopeCard } from "./AllPortsCard";
+import MobilePolicyCards from "./MobilePolicyCards";
 
 // Add this type definition at the top of the file
 type RegionEligibility = {
@@ -242,15 +243,17 @@ const ProvinceInfoCard = ({
   };
 
   return (
-    <div className="flex gap-4 w-full h-1/4 max-h-[250px] min-h-[150px] z-10">
-      <Card className="w-1/2">
+    <div className="flex flex-col md:flex-row absolute md:static bottom-4 gap-4 px-4 md:px-0 w-full md:h-1/4 md:max-h-[250px] md:min-h-[150px] z-10">
+      <Card className="md:w-1/2 ">
         <div className="flex flex-col gap-2 justify-between h-full px-3 py-4 overflow-y-auto">
           <div className="text-base font-bold">
             Travel Scope <span className="font-normal">in</span>{" "}
             <span className="italic">{provinceToShow || "???"}</span>
           </div>
           <div className="text-xs flex flex-col font-medium flex-1 min-w-0 overflow-y-hidden justify-center min-h-4">
-            {provinceToShow && getRegionEligibility()?.[provinceToShow] ? (
+            {!policy ? (
+              "Please select a visa policy from above to view travel scope information"
+            ) : provinceToShow && getRegionEligibility()?.[provinceToShow] ? (
               <>
                 {renderScope(
                   getRegionEligibility()?.[provinceToShow]?.allowedScope || ""
@@ -275,14 +278,16 @@ const ProvinceInfoCard = ({
           </div>
         </div>
       </Card>
-      <Card className="w-1/2">
+      <Card className="md:w-1/2">
         <div className="flex flex-col gap-2 justify-between h-full px-3 py-4 overflow-y-auto">
           <div className="text-base font-bold">
             Ports of Entry/Exit <span className="font-normal">in</span>{" "}
             <span className="italic">{provinceToShow || "???"}</span>
           </div>
           <div className="text-xs flex flex-col font-medium flex-1 min-w-0 overflow-y-hidden justify-center min-h-4">
-            {provinceToShow && getRegionEligibility()?.[provinceToShow] ? (
+            {!policy ? (
+              "Please select a visa policy from above to view permitted ports of entry/exit"
+            ) : provinceToShow && getRegionEligibility()?.[provinceToShow] ? (
               <>
                 {renderPorts(
                   getRegionEligibility()?.[provinceToShow].allowedPorts ?? []
@@ -307,6 +312,7 @@ const ProvinceInfoCard = ({
           </div>
         </div>
       </Card>
+      <MobilePolicyCards />
     </div>
   );
 };

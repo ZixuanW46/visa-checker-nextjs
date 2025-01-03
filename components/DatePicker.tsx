@@ -20,7 +20,7 @@ interface DatePickerProps {
 
 export function DatePicker({ value, onChange }: DatePickerProps) {
   return (
-    <Popover>
+    <Popover modal={true}>
       <PopoverTrigger asChild>
         <Button
           variant={"outline"}
@@ -41,7 +41,13 @@ export function DatePicker({ value, onChange }: DatePickerProps) {
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0">
+      <PopoverContent
+        className="w-auto p-0"
+        align="center"
+        side="bottom"
+        sideOffset={8}
+        style={{ zIndex: 9999 }}
+      >
         <Calendar
           mode="single"
           selected={value}

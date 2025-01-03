@@ -35,12 +35,12 @@ const ContentBox = () => {
   };
 
   return (
-    <div className="bg-gray-300 rounded-[2rem] w-full h-full flex gap-4 p-8">
-      <div className="flex flex-col gap-4 w-2/5 max-w-[27rem] overflow-y-auto max-h-[calc(100vh-7rem)]">
+    <div className="bg-gray-300 md:rounded-[2rem] w-full h-full md:flex gap-4 md:p-8 flex-grow-[5] flex-shrink-[1]">
+      <div className="gap-4 w-2/5 max-w-[27rem] overflow-y-auto max-h-[calc(100vh-7rem)] hidden md:flex md:flex-col">
         <VisaPolicyContainer />
       </div>
-      <div className="flex-1 min-w-0 flex flex-col items-center max-h-[calc(100vh-7rem)] overflow-y-auto">
-        <div className="w-full h-[calc(100%-120px)] relative mb-8">
+      <div className="h-full md:flex-1 md:min-w-0 md:flex md:flex-col md:items-center md:overflow-y-auto">
+        <div className="w-full md:h-[calc(100%-120px)] h-full relative md:mb-8">
           <div className="absolute inset-0">
             <InteractiveMap
               regionEligibility={getRegionEligibility()}

@@ -99,7 +99,7 @@ const VisaPolicyCard = ({
   const [showPolicyDetails, setShowPolicyDetails] = React.useState(false);
 
   return (
-    <Card className="px-5 py-4 rounded-2xl">
+    <Card className="bg-transparent md:bg-white rounded-none border-none md:border shadow-none md:shadow-lg px-5 py-4 md:rounded-2xl">
       <Accordion
         type="single"
         collapsible
@@ -407,12 +407,13 @@ const VisaPolicyContainer = () => {
   });
 
   return (
-    <div className="space-y-4">
+    <div className="md:space-y-4">
       <VisaPolicyCardVisaFree
         value="visa-free"
         currentValue={currentCard}
         onValueChange={setCurrentCard}
       />
+      <div className="border-b border-gray-300 w-5/6 mx-auto md:hidden"></div>
       <VisaPolicyCard240
         value="transit-240"
         currentValue={currentCard}
