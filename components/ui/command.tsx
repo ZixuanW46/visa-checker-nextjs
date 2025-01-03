@@ -1,5 +1,3 @@
-// @ts-expect-error Server Component - The cmdk package has type incompatibilities with React Server Components
-
 "use client";
 
 import * as React from "react";
