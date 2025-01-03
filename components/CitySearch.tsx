@@ -105,14 +105,14 @@ function StatusList({
   setSelectedStatus: (status: Status | null) => void;
 }) {
   return (
-    // @ts-ignore
+    // @ts-expect-error
     <Command>
       <CommandInput placeholder="Filter status..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup>
           {statuses.map((status) => (
-            // @ts-ignore
+            // @ts-expect-error
             <CommandItem
               key={status.value}
               value={status.value}
