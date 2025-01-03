@@ -4,14 +4,7 @@ import * as React from "react";
 
 import { useMediaQuery } from "@/components/hooks/user-media-query";
 import { Button } from "@/components/ui/button";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
+
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import {
   Popover,
@@ -25,35 +18,10 @@ type Status = {
   label: string;
 };
 
-const statuses: Status[] = [
-  {
-    value: "backlog",
-    label: "Backlog",
-  },
-  {
-    value: "todo",
-    label: "Todo",
-  },
-  {
-    value: "in progress",
-    label: "In Progress",
-  },
-  {
-    value: "done",
-    label: "Done",
-  },
-  {
-    value: "canceled",
-    label: "Canceled",
-  },
-];
-
 export function CitySearch() {
   const [open, setOpen] = React.useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const [selectedStatus, setSelectedStatus] = React.useState<Status | null>(
-    null
-  );
+  const [selectedStatus] = React.useState<Status | null>(null);
 
   if (isDesktop) {
     return (
@@ -63,9 +31,10 @@ export function CitySearch() {
             {selectedStatus ? <>{selectedStatus.label}</> : <>+ Set status</>}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0" align="start">
-          <StatusList setOpen={setOpen} setSelectedStatus={setSelectedStatus} />
-        </PopoverContent>
+        <PopoverContent
+          className="w-[200px] p-0"
+          align="start"
+        ></PopoverContent>
       </Popover>
     );
   }
@@ -89,45 +58,8 @@ export function CitySearch() {
         </Button>
       </DrawerTrigger>
       <DrawerContent>
-        <div className="mt-4 border-t">
-          <StatusList setOpen={setOpen} setSelectedStatus={setSelectedStatus} />
-        </div>
+        <div className="mt-4 border-t"></div>
       </DrawerContent>
     </Drawer>
-  );
-}
-
-function StatusList({
-  setOpen,
-  setSelectedStatus,
-}: {
-  setOpen: (open: boolean) => void;
-  setSelectedStatus: (status: Status | null) => void;
-}) {
-  return (
-    <Command>
-      <CommandInput placeholder="Filter status..." />
-      <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup>
-          {statuses.map((status) => (
-            <CommandItem
-              key={status.value}
-              value={status.value}
-              onSelect={(currentValue: string) => {
-                setSelectedStatus(
-                  statuses.find(
-                    (priority) => priority.value === currentValue
-                  ) || null
-                );
-                setOpen(false);
-              }}
-            >
-              {status.label}
-            </CommandItem>
-          ))}
-        </CommandGroup>
-      </CommandList>
-    </Command>
   );
 }
