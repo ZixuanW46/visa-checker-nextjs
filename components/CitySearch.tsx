@@ -105,14 +105,12 @@ function StatusList({
   setSelectedStatus: (status: Status | null) => void;
 }) {
   return (
-    // @ts-expect-error Server Component - The Command component from cmdk has type incompatibilities with React Server Components
     <Command>
       <CommandInput placeholder="Filter status..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup>
           {statuses.map((status) => (
-            // @ts-expect-error Server Component - The CommandItem component has type incompatibilities that need to be ignored
             <CommandItem
               key={status.value}
               value={status.value}
