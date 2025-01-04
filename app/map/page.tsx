@@ -1,5 +1,5 @@
-import InteractiveMap from "@/components/InteractiveMap";
-import { regionEligibilityVisaFree } from "@/components/RegionEligibility";
+import InteractiveMap from "@/components/page_visa/InteractiveMap";
+import { regionEligibilityVisaFree } from "@/components/page_visa/RegionEligibility";
 
 const page = () => {
   return (

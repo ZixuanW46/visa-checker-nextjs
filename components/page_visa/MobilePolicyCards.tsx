@@ -1,14 +1,14 @@
 "use client";
 
 import React from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import {
   Drawer,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "./ui/drawer";
+} from "../ui/drawer";
 import { VisaPolicyContainer } from "./VisaPolicyCard";
 import { useSearchParams } from "next/navigation";
 import {

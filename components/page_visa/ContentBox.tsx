@@ -36,7 +36,7 @@ const ContentBox = () => {
 
   return (
     <div className="bg-gray-300 md:rounded-[2rem] w-full h-full md:flex gap-4 md:p-8 flex-grow-[5] flex-shrink-[1]">
-      <div className="gap-4 w-2/5 max-w-[27rem] overflow-y-auto max-h-[calc(100vh-7rem)] hidden md:flex md:flex-col">
+      <div className="gap-4 w-2/5 max-w-[27rem] overflow-y-auto max-h-[calc(100vh-7rem)] hidden md:flex md:flex-col overflow-visible">
         <VisaPolicyContainer />
       </div>
       <div className="h-full md:flex-1 md:min-w-0 md:flex md:flex-col md:items-center md:overflow-y-auto">

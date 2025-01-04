@@ -11,7 +11,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import InputPanel from "@/components/InputPanel";
+import InputPanel from "@/components/page_visa/InputPanel";
 import { useRef } from "react";
 import { useDrawerStore } from "@/lib/store/drawerStore";
 

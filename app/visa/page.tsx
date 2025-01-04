@@ -1,18 +1,18 @@
 import React, { Suspense } from "react";
-import InputPanel from "@/components/InputPanel";
-import ContentBox from "@/components/ContentBox";
+import InputPanel from "@/components/page_visa/InputPanel";
+import ContentBox from "@/components/page_visa/ContentBox";
 import {
   Sheet,
   SheetContent,
   SheetTrigger,
   SheetTitle,
 } from "@/components/ui/sheet";
-import ModifyInputButton from "@/components/ModifyInputButton";
+import ModifyInputButton from "@/components/page_visa/ModifyInputButton";
 const Page = () => {
   return (
     <>
       <div className="flex flex-1 md:px-8 md:pb-5 w-full md:max-h-[min(1000px,calc(100vh-5rem))] gap-4 relative">
-        <div className="hidden custom:block flex-grow-[2] flex-shrink-[3]">
+        <div className="hidden custom:block flex-grow-[2] flex-shrink-[3] max-w-[270px]">
           <Suspense fallback={<InputPanelSkeleton />}>
             <InputPanel foldable={false} />
           </Suspense>

@@ -163,10 +163,15 @@ const ProvinceInfoCard = ({
     }
 
     // Original logic for other policies
+    const portsText =
+      provinceToShow === "Guangdong"
+        ? `Exits available at all open ports across the Guangdong province, however entering China only allowed through the following ports:\n\n${ports.join(
+            ", "
+          )}`
+        : `You are allowed to enter or exit China through the following ports in ${provinceToShow}:\n\n${ports.join(
+            ", "
+          )}`;
 
-    const portsText = `You are allowed to enter or exit China through the following ports in ${provinceToShow}:\n\n${ports.join(
-      ", "
-    )}`;
     return (
       <>
         <TruncatedText

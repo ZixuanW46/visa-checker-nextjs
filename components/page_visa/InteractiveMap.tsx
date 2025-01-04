@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import ChinaMap from "./ChinaMap";
 import { Plus, Minus, RotateCcw } from "lucide-react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 interface InteractiveMapProps {
   regionEligibility?: {
