@@ -73,12 +73,14 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <AccordionPrimitive.Content
     ref={ref}
-    className="overflow-visible text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+    className={cn(
+      "overflow-hidden",
+      "data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+      className
+    )}
     {...props}
   >
-    <div className={cn("pb-4 pt-0 overflow-visible", className)}>
-      {children}
-    </div>
+    <div className={cn("pb-4 pt-0", className)}>{children}</div>
   </AccordionPrimitive.Content>
 ));
 AccordionContent.displayName = AccordionPrimitive.Content.displayName;
@@ -103,7 +105,7 @@ const VisaPolicyCard = ({
   const [showPolicyDetails, setShowPolicyDetails] = React.useState(true);
 
   return (
-    <Card className="bg-transparent md:bg-white rounded-none border-none md:border shadow-none md:shadow-lg px-5 py-4 md:rounded-2xl overflow-visible">
+    <Card className="bg-transparent md:bg-white rounded-none border-none md:border shadow-none md:shadow-lg px-5 py-4 md:rounded-2xl relative z-0">
       <Accordion
         type="single"
         collapsible
@@ -199,7 +201,7 @@ const VisaPolicyNationality = ({
   const nationalities = searchParams.get("nationality")?.split(",") || [];
 
   return (
-    <div className="flex flex-col gap-2 mt-4 overflow-visible">
+    <div className="flex flex-col gap-2 mt-4">
       <p className="text-sm font-bold">Nationality 🇺🇳</p>
       {nationalities.length > 0 ? (
         <>

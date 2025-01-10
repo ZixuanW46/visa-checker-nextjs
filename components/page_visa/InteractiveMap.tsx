@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import ChinaMap from "./ChinaMap";
 import { Plus, Minus, RotateCcw } from "lucide-react";
 import { Button } from "../ui/button";
+import { useMapStore } from "@/lib/store/mapStore";
+import SearchCity from "./SearchCity";
 
 interface InteractiveMapProps {
   regionEligibility?: {
@@ -24,11 +26,9 @@ const InteractiveMap = ({
 }: InteractiveMapProps) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [hoveredPath, setHoveredPath] = useState<string | null>(null);
-  const [selectedPath, setSelectedPath] = useState<string | null>(null);
-  const [zoom, setZoom] = useState(1);
+  const { selectedPath, setSelectedPath, zoom, panPosition, setZoomAndPan } =
+    useMapStore();
   const [isPanning, setIsPanning] = useState(false);
-  const [panPosition, setPanPosition] = useState({ x: 0, y: 0 });
-
   const [startPanPosition, setStartPanPosition] = useState({ x: 0, y: 0 });
   const [hoveredLegendType, setHoveredLegendType] = useState<string | null>(
     null
@@ -120,9 +120,9 @@ const InteractiveMap = ({
     }
 
     if (isPanning) {
-      setPanPosition({
-        x: (event.clientX - startPanPosition.x) * zoom,
-        y: (event.clientY - startPanPosition.y) * zoom,
+      setZoomAndPan(zoom, {
+        x: event.clientX - startPanPosition.x,
+        y: event.clientY - startPanPosition.y,
       });
     }
   };
@@ -196,16 +196,15 @@ const InteractiveMap = ({
   };
 
   const handleZoomIn = () => {
-    setZoom((prev) => Math.min(prev + 0.2, 2));
+    setZoomAndPan(Math.min(zoom + 0.2, 5), panPosition);
   };
 
   const handleZoomOut = () => {
-    setZoom((prev) => Math.max(prev - 0.2, 0.5));
+    setZoomAndPan(Math.max(zoom - 0.2, 0.05), panPosition);
   };
 
   const handleReset = () => {
-    setZoom(1);
-    setPanPosition({ x: 0, y: 0 });
+    setZoomAndPan(1, { x: 0, y: 0 });
   };
 
   useEffect(() => {
@@ -292,11 +291,11 @@ const InteractiveMap = ({
       if (touchDistance !== null) {
         const scale = newDistance / touchDistance;
         const newZoom = Math.min(Math.max(zoom * scale, 0.5), 2);
-        setZoom(newZoom);
+        setZoomAndPan(newZoom, panPosition);
         setTouchDistance(newDistance);
       }
     } else if (e.touches.length === 1 && isPanning) {
-      setPanPosition({
+      setZoomAndPan(zoom, {
         x: e.touches[0].clientX - startPanPosition.x,
         y: e.touches[0].clientY - startPanPosition.y,
       });
@@ -314,33 +313,38 @@ const InteractiveMap = ({
 
   return (
     <div className="w-full h-full relative overflow-hidden" tabIndex={-1}>
-      <div className="absolute left-4 top-4 flex flex-col gap-4 z-10 items-center">
-        <div className="flex flex-col bg-white rounded-full shadow-md items-center">
+      <div className="absolute left-4 flex flex-col gap-4 z-10 items-center">
+        <div className="absolute left-0 top-0 z-[1000] hidden md:block">
+          <SearchCity />
+        </div>
+        <div className="absolute flex flex-col items-center gap-2 left-0 top-4 md:top-[4.5rem]">
+          <div className="flex flex-col bg-white rounded-full shadow-md items-center">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleZoomIn}
+              className="rounded-t-full hover:bg-gray-200 h-10 w-12 group md:flex hidden"
+            >
+              <Plus className="h-5 w-5 group-hover:text-white mt-1" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={handleZoomOut}
+              className="rounded-b-full hover:bg-gray-200 h-10 w-12 group md:flex hidden"
+            >
+              <Minus className="h-5 w-5 group-hover:text-white mb-1" />
+            </Button>
+          </div>
           <Button
-            variant="ghost"
+            variant="outline"
             size="icon"
-            onClick={handleZoomIn}
-            className="rounded-t-full hover:bg-gray-200 h-10 w-12 group md:flex hidden"
+            onClick={handleReset}
+            className="bg-themePrimary hover:bg-black group rounded-full h-[3.2rem] w-[3.2rem]"
           >
-            <Plus className="h-5 w-5 group-hover:text-white mt-1" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={handleZoomOut}
-            className="rounded-b-full hover:bg-gray-200 h-10 w-12 group md:flex hidden"
-          >
-            <Minus className="h-5 w-5 group-hover:text-white mb-1" />
+            <RotateCcw className="h-5 w-5 text-white" />
           </Button>
         </div>
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={handleReset}
-          className="bg-themePrimary hover:bg-black group rounded-full h-[3.2rem] w-[3.2rem]"
-        >
-          <RotateCcw className="h-5 w-5 text-white" />
-        </Button>
       </div>
 
       <div

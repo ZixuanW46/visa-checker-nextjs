@@ -8,9 +8,12 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import ModifyInputButton from "@/components/page_visa/ModifyInputButton";
+import UserInstructionAlert from "@/components/page_visa/UserInstructionAlert";
+
 const Page = () => {
   return (
     <>
+      <UserInstructionAlert />
       <div className="flex flex-1 md:px-8 md:pb-5 w-full md:max-h-[min(1000px,calc(100vh-5rem))] gap-4 relative">
         <div className="hidden custom:block flex-grow-[2] flex-shrink-[3] max-w-[270px]">
           <Suspense fallback={<InputPanelSkeleton />}>

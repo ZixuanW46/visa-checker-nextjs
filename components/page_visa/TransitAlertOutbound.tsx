@@ -45,14 +45,21 @@ export default function TransitAlertOutbound() {
               <span className="font-extrabold text-logo">Transit?</span>
             </AlertDialogTitle>
             <AlertDialogDescription>
-              If you have a layover in another country after leaving China,
-              please select your{" "}
-              <span className="font-bold">&quot;first landing place&quot;</span>{" "}
-              as the Flight Destination.
+              <span className="font-bold">Important:</span> Do NOT list your
+              final destination country. Instead, list your{" "}
+              <span className="font-bold">first transit city</span> as your
+              <span className="font-bold">&quot;Flight Destination&quot;</span>.
               <br />
               <br />
-              For example, if your route is &quot;Beijing → Tokyo →
-              London&quot;, select <span className="font-bold">Tokyo</span>.
+              For example, if your route is{" "}
+              <span className="font-bold">
+                &quot;Shanghai → Tokyo → USA → Canada&quot;
+              </span>
+              :
+              <br />✓ List <span className="font-bold">Tokyo</span> as your{" "}
+              <span className="font-bold">&quot;Flight Destination&quot;</span>
+              <br />✗ Do NOT list <span className="font-bold">USA</span> or{" "}
+              <span className="font-bold">Canada</span>
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

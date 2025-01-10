@@ -16,6 +16,7 @@ export default {
       colors: {
         logo: "#FD8613",
         themePrimary: "#084712",
+        themeSecondary: "#4DBDBD",
         yellow: "#FCD36A",
         red: "#D95638",
         black: {

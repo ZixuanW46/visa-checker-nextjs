@@ -170,6 +170,7 @@ const InputPanel = forwardRef(
                 Optional
               </span>
             </p>
+
             <div>
               <p className="inputSubtitle">Flight Origin</p>
               <SingleSelectCountry
