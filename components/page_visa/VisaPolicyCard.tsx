@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
-import { ChevronDown, Check, Plus } from "lucide-react";
+import { Check, Plus } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
@@ -41,12 +41,14 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-start gap-2 text-base font-bold transition-all hover:underline hover:text-red text-left [&[data-state=open]>svg]:rotate-180",
+        "flex flex-1 items-center justify-start gap-2 text-base font-bold transition-all hover:underline hover:text-red text-left [&[data-state=open]>svg]:rotate-180 group",
         className
       )}
       {...props}
     >
-      <ChevronDown className="h-8 w-8 shrink-0 text-muted-foreground transition-transform duration-200 stroke-1" />
+      <div className="rounded-full w-4 h-4 ring-[1.5px] ring-gray-100 flex items-center justify-center mr-4">
+        <div className="w-[0.6rem] h-[0.6rem] bg-logo rounded-full group-data-[state=open]:block hidden"></div>
+      </div>
       {children}
     </AccordionPrimitive.Trigger>
     {status === "ineligible" && (
