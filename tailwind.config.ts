@@ -10,6 +10,7 @@ export default {
   theme: {
     extend: {
       screens: {
+        ssm: "380px",
         custom: "1100px",
         customPlus: "1280px",
       },

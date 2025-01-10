@@ -136,10 +136,10 @@ const regionEligibilityVisaFree = {
     ],
     allowedPorts: [],
   },
-  Xizang: {
+  Tibet: {
     eligibility: "partially-eligible",
     allowedScope: [
-      "Xizang only under a special permit, you can apply for it through a local travel agency",
+      "Tibet only under a special permit, you can apply for it through a local travel agency",
     ],
     allowedPorts: [],
   },
@@ -371,7 +371,7 @@ const regionEligibility240Hour = {
     allowedScope: [],
     allowedPorts: [],
   },
-  Xizang: {
+  Tibet: {
     eligibility: "ineligible",
     allowedScope: [],
     allowedPorts: [],
@@ -704,7 +704,7 @@ const allChinaPorts = {
     YTW: "Yutian Wanfang Airport",
     ZFL: "Zhaosu Tianma Airport",
   },
-  Xizang: {
+  Tibet: {
     BPX: "Changdu Bangda Airport",
     DDR: "Rikaze Dingri Airport",
     NGQ: "Ali Kunsha Airport",

@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import capyLogo from "@/public/capy_logo.svg";
 import NavbarTab from "./NavbarTab";
@@ -7,7 +6,7 @@ import icon_visa from "@/public/icon_visa.svg";
 import icon_payment from "@/public/icon_payment.svg";
 import icon_transportation from "@/public/icon_transportation.svg";
 import icon_internet from "@/public/icon_internet.svg";
-import NavbarUser from "./NavbarUser";
+import NavbarFolded from "./NavbarFolded";
 import { Inter } from "next/font/google";
 
 interface NavbarProps {
@@ -39,7 +38,7 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
           <span className="font-medium text-black">China 101</span>
         </p>
       </div>
-      <div className="flex md:hidden custom:flex gap-2 md:gap-3">
+      <div className="hidden custom:flex gap-2 md:gap-3">
         <NavbarTab
           icon={
             <Image
@@ -106,7 +105,20 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
           active={tab === "transportation"}
         />
       </div>
-      <NavbarUser />
+      <div className="">
+        <div className="flex gap-2 custom:hidden">
+          <div className=" rounded-full w-[2rem] h-[2rem] flex items-center justify-center">
+            <Image
+              src={icon_home}
+              alt="home icon"
+              width={20}
+              height={20}
+              className="md:w-[20px] md:h-[20px]"
+            />
+          </div>
+          <NavbarFolded tab={tab} />
+        </div>
+      </div>
     </div>
   );
 };

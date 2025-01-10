@@ -5,7 +5,7 @@ import ChinaMap from "./ChinaMap";
 import { Plus, Minus, RotateCcw } from "lucide-react";
 import { Button } from "../ui/button";
 import { useMapStore } from "@/lib/store/mapStore";
-import SearchCity from "./SearchCity";
+import { SearchCity } from "./SearchCity";
 
 interface InteractiveMapProps {
   regionEligibility?: {
