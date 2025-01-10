@@ -34,7 +34,7 @@ export default function TransitAlertOutbound() {
             handleCheckboxChange(checked as boolean)
           }
         />
-        <Label htmlFor="transit">I am taking a transit flight</Label>
+        <Label htmlFor="transit">My flight has a connecting stop</Label>
       </div>
 
       <AlertDialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>

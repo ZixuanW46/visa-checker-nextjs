@@ -33,7 +33,7 @@ const MobileTopPannel = () => {
   };
 
   return (
-    <div className="h-[4.5rem] w-full pt-[0.6rem] flex px-6 justify-between gap-4 md:hidden shadow-[0px_2px_4px_0px_rgba(0,0,0,0.1)] z-[1000]">
+    <div className="h-[4.5rem] w-full pt-[0.6rem] flex px-6 justify-between gap-4 md:hidden shadow-[0px_2px_4px_0px_rgba(0,0,0,0.1)] z-[11]">
       <SearchCityMobile />
       <Drawer repositionInputs={true} modal={false} handleOnly={false}>
         <DrawerTrigger asChild>

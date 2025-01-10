@@ -9,7 +9,7 @@ import NoneFlightNotice from "./NoneFlightNotice";
 import SingleSelectPort from "./SingleSelectPort";
 import { DatePicker } from "./DatePicker";
 import TransitAlertOutbound from "./TransitAlertOutbound";
-import NoneFlightNoticeOutbound from "./NoneFlightNoticeOutbound";
+import HongKongMacauNotice from "./HongKongMacauNotice";
 import { MoreInfo } from "./MoreInfo";
 import {
   parseAsIsoDate,
@@ -181,8 +181,11 @@ const InputPanel = forwardRef(
             <div className="mt-8">
               <TransitAlert />
             </div>
-            <div className="">
+            <div className="mt-1">
               <NoneFlightNotice />
+            </div>
+            <div className="mb-1 mt-1">
+              <HongKongMacauNotice inbound={true} />
             </div>
             <div>
               <p className="inputSubtitle">Arrival Airport</p>
@@ -219,8 +222,11 @@ const InputPanel = forwardRef(
             <div className="mt-8">
               <TransitAlertOutbound />
             </div>
-            <div className="">
-              <NoneFlightNoticeOutbound />
+            <div className="mt-1">
+              <NoneFlightNotice inbound={false} />
+            </div>
+            <div className="mt-1 mb-1">
+              <HongKongMacauNotice inbound={false} />
             </div>
             <div>
               <p className="inputSubtitle">Departure Airport</p>

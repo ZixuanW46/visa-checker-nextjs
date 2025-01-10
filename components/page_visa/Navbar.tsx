@@ -21,7 +21,7 @@ const inter = Inter({
 const Navbar = ({ className, tab = "home" }: NavbarProps) => {
   return (
     <div
-      className={`flex justify-between items-center px-3 md:px-8 h-[4rem] md:h-20 w-full flex-shrink-0 border-t md:border-t-0 border-gray-200 ${className}`}
+      className={`flex bg-white justify-between items-center px-3 md:px-8 h-[4rem] md:h-20 w-full flex-shrink-0 border-t md:border-t-0 border-gray-200 ${className}`}
     >
       <div className="flex gap-3 md:min-w-56 items-center">
         <Image

@@ -158,9 +158,9 @@ const InfoSource = ({
   const [isHovering, setIsHovering] = React.useState(false);
 
   return (
-    <div className="relative inline-block">
+    <div className="relative inline-block ml-[3px] top-[1.3px]">
       <button
-        className="text-[0.6rem] bg-gray-200 rounded-full px-2 py-[0.01rem] text-white  hover:bg-gray-100 flex items-center gap-1"
+        className="text-[0.6rem] bg-white rounded-full ring-[1.7px] ring-offset-[-0.4px] ring-gray-200 px-1 text-gray-200 hover:bg-gray-100 hover:text-white flex items-center gap-1"
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         onClick={() => window.open(sourceUrl, "_blank")}
@@ -285,7 +285,7 @@ const VisaPolicyFlight = ({
         {inboundOrigin && outboundDestination && (
           <span
             className={`${
-              isRequirementMet ? "bg-green-600" : "bg-red"
+              isRequirementMet ? "bg-[#27D96C]" : "bg-[#D95638]"
             } text-white px-[.5rem] rounded-full text-[0.6rem] font-bold`}
           >
             {isRequirementMet ? "REQUIREMENT MET" : "REQUIREMENT NOT MET"}
@@ -409,7 +409,7 @@ const VisaPolicyDuration = ({
         {inboundDate && outboundDate && (
           <span
             className={`${
-              isRequirementMet ? "bg-green-600" : "bg-red"
+              isRequirementMet ? "bg-[#27D96C]" : "bg-[#D95638]"
             } text-white px-[.5rem] rounded-full text-[0.6rem] font-bold`}
           >
             {isRequirementMet ? "REQUIREMENT MET" : "REQUIREMENT NOT MET"}
@@ -565,7 +565,7 @@ const VisaPolicyPort = ({
           (outboundPort && !outboundRequirementMet)) && (
           <span
             className={`${
-              isRequirementMet ? "bg-green-600" : "bg-red"
+              isRequirementMet ? "bg-[#27D96C]" : "bg-[#D95638]"
             } text-white px-[.5rem] rounded-full text-[0.6rem] font-bold`}
           >
             {isRequirementMet ? "REQUIREMENT MET" : "REQUIREMENT NOT MET"}

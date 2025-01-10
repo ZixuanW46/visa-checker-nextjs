@@ -17,7 +17,7 @@ export default function RootLayout({
       <Navbar className="hidden md:flex" tab="visa" />
       <MobileTopPannel />
       {children}
-      <Navbar className="md:hidden block" tab="visa" />
+      <Navbar className="md:hidden block z-[100]" tab="visa" />
     </div>
   );
 }

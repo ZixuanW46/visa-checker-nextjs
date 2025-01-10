@@ -38,7 +38,7 @@ const NavbarFolded = ({ tab }: { tab: string }) => {
         </div>
       </DialogTrigger>
       <DialogContent
-        className="rounded-xl !translate-y-0 !translate-x-0 !top-auto !bottom-[4.6rem] md:!bottom-auto md:!top-[4.6rem] md:!left-auto px-3 py-1 w-[92dvw] md:w-[20rem] md:!right-[2rem]"
+        className="rounded-xl !translate-y-0 md:!translate-x-0 !top-auto !bottom-[4.6rem] md:!bottom-auto md:!top-[4.6rem] md:!left-auto px-3 py-1 w-[92dvw] md:w-[20rem] md:!right-[2rem]"
         hideCloseButton
       >
         <DialogHeader>

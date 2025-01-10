@@ -269,17 +269,19 @@ const ProvinceInfoCard = ({
             )}
           </div>
 
-          <div className="text-xs font-bold underline text-gray-200 text-end pt-2">
-            {(() => {
-              switch (policy) {
-                case "transit-240":
-                  return "240 Hour Transit Visa-Free policy";
-                case "visa-free":
-                  return "Visa-Free Entry policy";
-                default:
-                  return "";
-              }
-            })()}{" "}
+          <div className="text-[0.6rem] font-bold  text-gray-200 pt-2">
+            <span className="rounded-full ring-1 ring-offset-2 ring-gray-200 px-1">
+              {(() => {
+                switch (policy) {
+                  case "transit-240":
+                    return "240 Hour Transit Visa-Free policy";
+                  case "visa-free":
+                    return "Visa-Free Entry policy";
+                  default:
+                    return "";
+                }
+              })()}
+            </span>
           </div>
         </div>
       </Card>
@@ -303,17 +305,19 @@ const ProvinceInfoCard = ({
             )}
           </div>
 
-          <div className="text-xs font-bold text-gray-200 underline text-end pt-2">
-            {(() => {
-              switch (policy) {
-                case "transit-240":
-                  return "240 Hour Transit Visa-Free policy";
-                case "visa-free":
-                  return "Visa-Free Entry policy";
-                default:
-                  return "";
-              }
-            })()}{" "}
+          <div className="text-[0.6rem] font-bold  text-gray-200 pt-2">
+            <span className="rounded-full ring-1 ring-offset-2 ring-gray-200 px-1">
+              {(() => {
+                switch (policy) {
+                  case "transit-240":
+                    return "240 Hour Transit Visa-Free policy";
+                  case "visa-free":
+                    return "Visa-Free Entry policy";
+                  default:
+                    return "";
+                }
+              })()}
+            </span>
           </div>
         </div>
       </Card>

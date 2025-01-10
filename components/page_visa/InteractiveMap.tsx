@@ -6,6 +6,7 @@ import { Plus, Minus, RotateCcw } from "lucide-react";
 import { Button } from "../ui/button";
 import { useMapStore } from "@/lib/store/mapStore";
 import { SearchCity } from "./SearchCity";
+import { useMediaQuery } from "@/components/hooks/user-media-query";
 
 interface InteractiveMapProps {
   regionEligibility?: {
@@ -311,6 +312,8 @@ const InteractiveMap = ({
     setIsTouchDevice("ontouchstart" in window);
   }, []);
 
+  const moveLegend = useMediaQuery("(max-height: 676px)");
+
   return (
     <div className="w-full h-full relative overflow-hidden" tabIndex={-1}>
       <div className="absolute left-4 flex flex-col gap-4 z-10 items-center">
@@ -367,11 +370,15 @@ const InteractiveMap = ({
         <ChinaMap getPathProps={getPathProps} width="100%" height="100%" />
       </div>
 
-      <div className="absolute left-4 top-[48%] md:top-auto md:bottom-4 p-4 z-10">
-        <div className="flex flex-col gap-2">
-          <LegendItem type="eligible" label="Eligible" />
-          <LegendItem type="partially-eligible" label="Partially Eligible" />
-          <LegendItem type="ineligible" label="Ineligible" />
+      <div
+        className={`absolute bottom-[21.5rem] md:top-auto md:bottom-0 p-4 z-10 ${
+          moveLegend ? "right-2" : "left-2"
+        }`}
+      >
+        <div className="flex flex-col gap-2 bg-white/30 backdrop-blur-sm p-3 rounded-lg shadow-lg">
+          <LegendItem type="eligible" label="Fully Accessible" />
+          <LegendItem type="partially-eligible" label="Partially Accessible" />
+          <LegendItem type="ineligible" label="Inaccessible" />
         </div>
       </div>
 
