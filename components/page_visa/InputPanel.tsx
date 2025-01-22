@@ -143,7 +143,7 @@ const InputPanel = forwardRef(
         className={`flex flex-col ${
           foldable
             ? "overflow-y-auto h-[calc(100dvh)] pl-8 pr-10 w-[450px]"
-            : "w-full md:overflow-y-auto md:h-[min(1000px,calc(100dvh-5rem))] md:pr-4 overflow-x-hidden"
+            : "w-full md:overflow-y-auto md:h-[min(1000px,calc(100dvh-5rem))] md:mr-4 overflow-x-hidden"
         }`}
       >
         <div
