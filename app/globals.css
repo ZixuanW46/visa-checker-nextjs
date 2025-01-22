@@ -195,3 +195,22 @@
 .inputSubtitle {
   @apply font-bold text-base text-black-200 mb-2;
 }
+
+/* Add or update these styles */
+[cmdk-input] {
+  font-size: 16px !important; /* Force 16px minimum font size */
+  -webkit-text-size-adjust: 100%; /* Prevent iOS font size adjustment */
+}
+
+[cmdk-input]::placeholder {
+  font-size: 16px !important;
+}
+
+input[type="text"],
+input[type="search"],
+input {
+  font-size: 16px !important; /* Minimum font size to prevent zoom */
+  transform-origin: top left;
+  transform: scale(1); /* Forces hardware acceleration */
+  -webkit-text-size-adjust: 100%;
+}

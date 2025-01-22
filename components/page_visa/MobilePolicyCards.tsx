@@ -116,7 +116,7 @@ const MobilePolicyCards = () => {
           </Button>
         </DrawerTrigger>
         <DrawerContent className="h-[66dvh]">
-          <div className="mx-auto w-full max-w-md flex-1 overflow-y-auto">
+          <div className="mx-auto w-full flex-1 overflow-y-auto">
             <DrawerHeader>
               <DrawerTitle>Choose a Policy</DrawerTitle>
             </DrawerHeader>

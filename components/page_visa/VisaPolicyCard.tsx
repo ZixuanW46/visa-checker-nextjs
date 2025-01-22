@@ -21,6 +21,14 @@ import { useQueryState } from "nuqs";
 
 import { allChinaPorts, allowedPorts240Hour } from "./RegionEligibility";
 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
+import { useDrawerStore } from "@/lib/store/drawerStore";
+
 const Accordion = AccordionPrimitive.Root;
 
 const AccordionItem = React.forwardRef<
@@ -107,7 +115,7 @@ const VisaPolicyCard = ({
   const [showPolicyDetails, setShowPolicyDetails] = React.useState(true);
 
   return (
-    <Card className="bg-transparent md:bg-white rounded-none border-none md:border shadow-none md:shadow-lg px-5 py-4 md:rounded-2xl relative z-0">
+    <Card className="bg-transparent md:bg-white rounded-none border-none md:border shadow-none md:shadow-lg px-5 py-4 md:rounded-[10px] relative z-0 w-full">
       <Accordion
         type="single"
         collapsible
@@ -157,33 +165,39 @@ const InfoSource = ({
   sourceName: string;
   sourceUrl: string;
 }) => {
-  const [isHovering, setIsHovering] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
   return (
     <div className="relative inline-block ml-[3px] top-[1.3px]">
-      <button
-        className="text-[0.6rem] bg-white rounded-full ring-[1.7px] ring-offset-[-0.4px] ring-gray-200 px-1 text-gray-200 hover:bg-gray-100 hover:text-white flex items-center gap-1"
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-        onClick={() => window.open(sourceUrl, "_blank")}
-      >
-        <span className="">source</span>
-      </button>
-
-      {isHovering && (
-        <div className="fixed transform -translate-x-1/2 -translate-y-[140%] w-48 bg-white border border-gray-200 rounded-lg shadow-lg p-3 z-[100]">
-          <div className="flex flex-col gap-2">
-            <div className="flex flex-col gap-1">
-              <div className="text-sm font-extrabold truncate">
-                {sourceName}
-              </div>
-              <div className="text-xs text-gray-500 font-bold truncate">
-                {new URL(sourceUrl).hostname}
-              </div>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <button
+            className="text-[0.6rem] bg-white rounded-full ring-[1.7px] ring-offset-[-0.4px] ring-gray-200 px-1 text-gray-200 hover:bg-gray-100 hover:text-white flex items-center gap-1"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open(sourceUrl, "_blank");
+            }}
+            onMouseEnter={() => setOpen(true)}
+            onMouseLeave={() => setOpen(false)}
+          >
+            <span>source</span>
+          </button>
+        </PopoverTrigger>
+        <PopoverContent
+          className="w-48 p-3"
+          align="center"
+          side="top"
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setOpen(false)}
+        >
+          <div className="flex flex-col gap-1">
+            <div className="text-sm font-extrabold truncate">{sourceName}</div>
+            <div className="text-xs text-gray-500 font-bold truncate">
+              {new URL(sourceUrl).hostname}
             </div>
           </div>
-        </div>
-      )}
+        </PopoverContent>
+      </Popover>
     </div>
   );
 };
@@ -201,6 +215,7 @@ const VisaPolicyNationality = ({
 }: VisaPolicyNationalityProps) => {
   const searchParams = useSearchParams();
   const nationalities = searchParams.get("nationality")?.split(",") || [];
+  const { setInputDrawerOpen } = useDrawerStore();
 
   return (
     <div className="flex flex-col gap-2 mt-4">
@@ -236,7 +251,15 @@ const VisaPolicyNationality = ({
         </>
       ) : (
         <p className="text-xs font-bold text-gray-200">
-          Please select your nationality to check eligibility
+          Please{" "}
+          <button
+            onClick={() => setInputDrawerOpen(true)}
+            className="text-themePrimary hover:text-logo md:hidden transition-colors underline"
+          >
+            select
+          </button>
+          <span className="hidden md:inline">select</span> your nationality to
+          check eligibility
         </p>
       )}
       {showPolicyDetails && (
@@ -274,6 +297,7 @@ const VisaPolicyFlight = ({
   const searchParams = useSearchParams();
   const inboundOrigin = searchParams.get("inboundOrigin");
   const outboundDestination = searchParams.get("outboundDestination");
+  const { setInputDrawerOpen } = useDrawerStore();
 
   const isRequirementMet =
     inboundOrigin &&
@@ -314,15 +338,22 @@ const VisaPolicyFlight = ({
           )
         ) : (
           <p className="text-xs font-bold">
-            Your outbound flight must NOT first land in{" "}
+            When leaving China, your plane&apos;s first stop cannot be in{" "}
             {countryCodeToName[inboundOrigin] || inboundOrigin}, either as a
             transit or as a final destination.
           </p>
         )
       ) : (
         <p className="text-xs font-bold text-gray-200">
-          Please select your inbound flight origin to see requirements for
-          onward flight tickets.
+          Please{" "}
+          <button
+            onClick={() => setInputDrawerOpen(true)}
+            className="text-themePrimary hover:text-logo md:hidden transition-colors underline"
+          >
+            select
+          </button>
+          <span className="hidden md:inline">select</span> your inbound flight
+          origin to see requirements for onward flight tickets.
         </p>
       )}
       {showPolicyDetails && (
@@ -352,6 +383,7 @@ const VisaPolicyDuration = ({
   const searchParams = useSearchParams();
   const inboundDate = searchParams.get("inboundDate");
   const outboundDate = searchParams.get("outboundDate");
+  const { setInputDrawerOpen } = useDrawerStore();
 
   const calculateDeadline = (
     date: string,
@@ -442,14 +474,23 @@ const VisaPolicyDuration = ({
         )
       ) : (
         <p className="text-xs font-bold text-gray-200">
-          Please select an arrival date to see your departure deadline
+          Please{" "}
+          <button
+            onClick={() => setInputDrawerOpen(true)}
+            className="text-themePrimary hover:text-logo md:hidden transition-colors underline"
+          >
+            select
+          </button>
+          <span className="hidden md:inline">select</span> an arrival date to
+          see your departure deadline
         </p>
       )}
       {showPolicyDetails && (
         <div className="text-xs font-normal">
           {visaType === "visa-free" ? (
             <>
-              The maximum duration is 30 days, starting from the date of entry.{" "}
+              The stay duration is limited to 30 calendar days per entry,
+              counted from and including your entry date.{" "}
               <InfoSource
                 sourceName="Ministry of Foreign Affairs of the People's Republic of China"
                 sourceUrl="https://www.mfa.gov.cn/wjbzwfwpt/kzx/tzgg/202411/t20241130_11535783.html"
@@ -457,8 +498,8 @@ const VisaPolicyDuration = ({
             </>
           ) : (
             <>
-              The maximum duration is 240 hours (10 days), start counting from
-              the midnight on the day after arrival.{" "}
+              The maximum duration is 240 hours (10 days), time counting begins
+              at midnight following your arrival.{" "}
               <InfoSource
                 sourceName="China Visa Application Service Center"
                 sourceUrl="https://bio.visaforchina.cn/SYD3_EN/tongzhigonggao/329041139338448896.html"
@@ -487,11 +528,11 @@ const VisaPolicyTravelScope = ({
             return (
               <>
                 <p className="text-xs font-normal">
-                  Under this visa policy, you are allowed to travel to all
-                  regions in mainland China. However, please note that for some
-                  areas in Xinjiang and Xizang (Tibet), you will need to apply
-                  for additional permits through travel agencies before your
-                  visit.
+                  The map shows regions you can visit under this visa policy.
+                  Provinces can be fully accessible, partially accessible (with
+                  restrictions on specific areas), or inaccessible. Click any
+                  province to see its detailed access rules. You can travel
+                  between accessible areas regardless of your entry/exit points.
                 </p>
               </>
             );
@@ -500,13 +541,14 @@ const VisaPolicyTravelScope = ({
               <>
                 <p className="text-xs font-bold underline">
                   This visa policy DOES NOT grant access to all regions of
-                  China. Click on the map to see eligibility of each region.
+                  China. Click on the map to see access rules of each region.
                 </p>
                 {showPolicyDetails && (
                   <div className="text-xs font-normal">
-                    In eligible regions, access varies by location. Some regions
-                    allow travel throughout the entire area, while others
-                    restrict travel to specific cities only.{" "}
+                    Provinces can be fully accessible, partially accessible
+                    (with restrictions on specific areas), or inaccessible. You
+                    can travel between accessible areas regardless of your
+                    entry/exit points.{" "}
                     <InfoSource
                       sourceName="China Visa Application Service Center"
                       sourceUrl="https://bio.visaforchina.cn/SYD3_EN/tongzhigonggao/329041139338448896.html"
@@ -529,6 +571,7 @@ const VisaPolicyPort = ({
   const searchParams = useSearchParams();
   const inboundPort = searchParams.get("inboundPort");
   const outboundPort = searchParams.get("outboundPort");
+  const { setInputDrawerOpen } = useDrawerStore();
 
   const getFullPortName = (iataCode: string) => {
     // Search through all regions in allChinaPorts
@@ -624,8 +667,15 @@ const VisaPolicyPort = ({
         )
       ) : (
         <p className="text-xs font-bold text-gray-200">
-          Please select your arrival and departure ports to check their
-          eligibility.
+          Please{" "}
+          <button
+            onClick={() => setInputDrawerOpen(true)}
+            className="text-themePrimary hover:text-logo md:hidden transition-colors underline"
+          >
+            select
+          </button>
+          <span className="hidden md:inline">select</span> your arrival and
+          departure ports to check their eligibility.
         </p>
       )}
       {showPolicyDetails && (
@@ -739,7 +789,7 @@ const VisaPolicyContainer = () => {
   });
 
   return (
-    <div className="md:space-y-4 overflow-visible">
+    <div className="md:space-y-4 overflow-visible w-full">
       <VisaPolicyCardVisaFree
         value="visa-free"
         currentValue={currentCard}

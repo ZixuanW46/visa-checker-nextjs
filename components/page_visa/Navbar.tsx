@@ -51,6 +51,7 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
           }
           name="Home"
           active={tab === "home"}
+          directTo="/"
         />
         <NavbarTab
           icon={
@@ -64,6 +65,7 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
           }
           name="Visa"
           active={tab === "visa"}
+          directTo="/visa"
         />
         <NavbarTab
           icon={
@@ -77,6 +79,7 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
           }
           name="Payment"
           active={tab === "payment"}
+          directTo="/payment"
         />
         <NavbarTab
           icon={
@@ -90,6 +93,7 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
           }
           name="Internet"
           active={tab === "internet"}
+          directTo="/internet"
         />
         <NavbarTab
           icon={
@@ -103,6 +107,7 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
           }
           name="Transportation"
           active={tab === "transportation"}
+          directTo="/transportation"
         />
       </div>
       <div className="">

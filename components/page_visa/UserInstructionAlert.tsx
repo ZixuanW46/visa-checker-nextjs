@@ -17,7 +17,7 @@ export default function UserInstructionAlert() {
   useEffect(() => {
     const hasSeenWelcome = localStorage.getItem("hasSeenWelcome");
 
-    if (!hasSeenWelcome || hasSeenWelcome) {
+    if (!hasSeenWelcome) {
       setOpen(true);
       localStorage.setItem("hasSeenWelcome", "true");
     }
@@ -25,7 +25,7 @@ export default function UserInstructionAlert() {
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
-      <AlertDialogContent className="w-[90vw] md:max-w-[700px]">
+      <AlertDialogContent className="w-[90vw] md:max-w-[700px] z-[10000]">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-2xl text-center">
             👋 Welcome to{" "}

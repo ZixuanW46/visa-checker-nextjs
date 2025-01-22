@@ -41,7 +41,7 @@ const InteractiveMap = ({
     eligible: {
       initialFill: "#FD8613",
       hoverFill: "#FD8613",
-      tooltipMessage: "eligible",
+      tooltipMessage: "accessible",
       selectedFill: "#FD8613",
       initialOpacity: "0.0",
       hoverOpacity: "0.60",
@@ -50,7 +50,7 @@ const InteractiveMap = ({
     "partially-eligible": {
       initialFill: "#4DBDBD",
       hoverFill: "#4DBDBD",
-      tooltipMessage: "partially eligible",
+      tooltipMessage: "partially accessible",
       selectedFill: "#4DBDBD",
       initialOpacity: "0.5",
       hoverOpacity: "0.6",
@@ -59,7 +59,7 @@ const InteractiveMap = ({
     ineligible: {
       initialFill: "#B2B2B2",
       hoverFill: "#B2B2B2",
-      tooltipMessage: "ineligible",
+      tooltipMessage: "inaccessible",
       selectedFill: "#B2B2B2",
       initialOpacity: "0.6",
       hoverOpacity: "0.7",
@@ -159,7 +159,7 @@ const InteractiveMap = ({
             ? colors.selectedOpacity
             : hoveredPath === name ||
               (hoveredLegendType === "eligible" &&
-                colors.tooltipMessage === "eligible")
+                colors.tooltipMessage === "accessible")
             ? colors.hoverOpacity
             : colors.initialOpacity,
         stroke: "white",
@@ -312,7 +312,9 @@ const InteractiveMap = ({
     setIsTouchDevice("ontouchstart" in window);
   }, []);
 
-  const moveLegend = useMediaQuery("(max-height: 676px)");
+  const moveLegend = useMediaQuery(
+    "((max-height: 676px) and (min-width: 768px)) or (max-width: 767px)"
+  );
 
   return (
     <div className="w-full h-full relative overflow-hidden" tabIndex={-1}>
@@ -343,9 +345,9 @@ const InteractiveMap = ({
             variant="outline"
             size="icon"
             onClick={handleReset}
-            className="bg-themePrimary hover:bg-black group rounded-full h-[3.2rem] w-[3.2rem]"
+            className="bg-white hover:bg-gray-200 group rounded-full h-[3.2rem] w-[3.2rem]"
           >
-            <RotateCcw className="h-5 w-5 text-white" />
+            <RotateCcw className="h-5 w-5 text-black group-hover:text-white" />
           </Button>
         </div>
       </div>
@@ -371,7 +373,7 @@ const InteractiveMap = ({
       </div>
 
       <div
-        className={`absolute bottom-[21.5rem] md:top-auto md:bottom-0 p-4 z-10 ${
+        className={`absolute top-[1rem] md:top-auto md:bottom-0 p-2 z-10 ${
           moveLegend ? "right-2" : "left-2"
         }`}
       >

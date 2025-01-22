@@ -82,7 +82,7 @@ const SearchCity = () => {
           transition-all duration-200 ease-in-out
           ${
             isHovered
-              ? "bg-white w-[14rem] rounded-xl"
+              ? "bg-white w-[14rem] rounded-[10px]"
               : "bg-black w-[3.2rem] rounded-full"
           }
           flex items-center justify-center
@@ -93,7 +93,7 @@ const SearchCity = () => {
       {(isHovered || searchShow) && (
         <div className="absolute flex flex-col top-0 left-0 w-[14rem] h-fit animate-in fade-in duration-1000 ease-in-out">
           <Command
-            className="rounded-lg border shadow-md w-[14rem]  h-fit 
+            className="rounded-[10px] border shadow-md w-[14rem]  h-fit 
           "
           >
             <CommandInput
@@ -193,7 +193,7 @@ const SearchCityMobile = () => {
         >
           <CommandInput
             placeholder={ssm ? "City Name" : "Search for a city..."}
-            className="rounded-xl h-[3.2rem]"
+            className="rounded-xl h-[3.2rem] text-base"
             value={searchValue}
             onValueChange={setSearchValue}
             onFocus={() => {

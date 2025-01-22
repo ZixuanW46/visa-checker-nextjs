@@ -21,7 +21,8 @@ const MobileTopPannel = () => {
     handleSubmit: () => void;
     handleClearAll: () => void;
   }>(null);
-  const { setPolicyDrawerOpen } = useDrawerStore();
+  const { setPolicyDrawerOpen, isInputDrawerOpen, setInputDrawerOpen } =
+    useDrawerStore();
 
   const handleSubmit = () => {
     inputPanelRef.current?.handleSubmit();
@@ -35,7 +36,13 @@ const MobileTopPannel = () => {
   return (
     <div className="h-[4.5rem] w-full pt-[0.6rem] flex px-6 justify-between gap-4 md:hidden shadow-[0px_2px_4px_0px_rgba(0,0,0,0.1)] z-[11]">
       <SearchCityMobile />
-      <Drawer repositionInputs={true} modal={false} handleOnly={false}>
+      <Drawer
+        open={isInputDrawerOpen}
+        onOpenChange={setInputDrawerOpen}
+        repositionInputs={true}
+        modal={false}
+        handleOnly={false}
+      >
         <DrawerTrigger asChild>
           <Button
             variant="default"
@@ -49,8 +56,8 @@ const MobileTopPannel = () => {
             <span className="text-sm font-medium ssm:hidden">Inputs</span>
           </Button>
         </DrawerTrigger>
-        <DrawerContent className="h-[88dvh]">
-          <div className="mx-auto w-full max-w-md flex-1 overflow-y-auto">
+        <DrawerContent className="h-[88dvh] z-[1000]">
+          <div className="mx-auto w-full flex-1 overflow-y-auto">
             <DrawerHeader>
               <DrawerTitle>Your Inputs</DrawerTitle>
             </DrawerHeader>

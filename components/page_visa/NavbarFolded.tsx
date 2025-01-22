@@ -57,6 +57,7 @@ const NavbarFolded = ({ tab }: { tab: string }) => {
               name="Home"
               fullWidth
               active={tab === "home"}
+              directTo="/"
             />
             <NavbarTab
               icon={
@@ -71,6 +72,7 @@ const NavbarFolded = ({ tab }: { tab: string }) => {
               name="China Visa Checker"
               fullWidth
               active={tab === "visa"}
+              directTo="/visa"
             />
             <NavbarTab
               icon={
@@ -85,6 +87,7 @@ const NavbarFolded = ({ tab }: { tab: string }) => {
               fullWidth
               name="Payment"
               active={tab === "payment"}
+              directTo="/payment"
             />
             <NavbarTab
               icon={
@@ -99,6 +102,7 @@ const NavbarFolded = ({ tab }: { tab: string }) => {
               fullWidth
               name="Internet"
               active={tab === "internet"}
+              directTo="/internet"
             />
             <NavbarTab
               icon={
@@ -113,6 +117,7 @@ const NavbarFolded = ({ tab }: { tab: string }) => {
               fullWidth
               name="Transportation"
               active={tab === "transportation"}
+              directTo="/transportation"
             />
           </div>
         </DialogHeader>
