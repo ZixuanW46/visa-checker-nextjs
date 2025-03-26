@@ -1,4 +1,4 @@
-import SnapScrollSection from "@/components/page_home/SnapScrollSection";
+import SnapScrollSection from "@/components/page_home/SnapScroll";
 import Image from "next/image";
 import drone_delivery_full from "@/public/drone_delivery_full.jpeg";
 import drone_delivery_part from "@/public/drone_delivery_part.png";

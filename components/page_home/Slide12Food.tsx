@@ -1,4 +1,4 @@
-import SnapScrollSection from "@/components/page_home/SnapScrollSection";
+import SnapScrollSection from "@/components/page_home/SnapScroll";
 import Image from "next/image";
 import food_full from "@/public/food_full.png";
 

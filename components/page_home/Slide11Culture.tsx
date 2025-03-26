@@ -1,4 +1,4 @@
-import SnapScrollSection from "@/components/page_home/SnapScrollSection";
+import SnapScrollSection from "@/components/page_home/SnapScroll";
 import Image from "next/image";
 import culture_full from "@/public/culture_full.png";
 
