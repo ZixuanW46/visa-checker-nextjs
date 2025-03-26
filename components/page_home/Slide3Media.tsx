@@ -15,42 +15,49 @@ const pt_sans_narrow = PT_Sans_Narrow({
 const Slide3Media = () => {
   const phoneFrameRef = useRef<HTMLImageElement>(null);
   const [frameSize, setFrameSize] = useState({ width: 0, height: 0 });
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const updateFrameSize = () => {
+    if (phoneFrameRef.current) {
+      const img = phoneFrameRef.current;
+      const containerWidth = img.clientWidth;
+      const containerHeight = img.clientHeight;
+      const naturalWidth = img.naturalWidth;
+      const naturalHeight = img.naturalHeight;
+
+      // Calculate the actual displayed dimensions
+      const aspectRatio = naturalWidth / naturalHeight;
+      let width, height;
+
+      if (containerHeight * aspectRatio > containerWidth) {
+        // Height constrained
+        width = containerWidth;
+        height = containerWidth / aspectRatio;
+      } else {
+        // Width constrained
+        height = containerHeight;
+        width = containerHeight * aspectRatio;
+      }
+
+      setFrameSize({
+        width,
+        height,
+      });
+    }
+  };
 
   useEffect(() => {
-    const updateFrameSize = () => {
-      if (phoneFrameRef.current) {
-        const img = phoneFrameRef.current;
-        const containerWidth = img.clientWidth;
-        const containerHeight = img.clientHeight;
-        const naturalWidth = img.naturalWidth;
-        const naturalHeight = img.naturalHeight;
+    if (imageLoaded) {
+      updateFrameSize();
+    }
 
-        // Calculate the actual displayed dimensions
-        const aspectRatio = naturalWidth / naturalHeight;
-        let width, height;
-
-        if (containerHeight * aspectRatio > containerWidth) {
-          // Height constrained
-          width = containerWidth;
-          height = containerWidth / aspectRatio;
-        } else {
-          // Width constrained
-          height = containerHeight;
-          width = containerHeight * aspectRatio;
-        }
-
-        setFrameSize({
-          width,
-          height,
-        });
-      }
-    };
-
-    updateFrameSize();
     window.addEventListener("resize", updateFrameSize);
-
     return () => window.removeEventListener("resize", updateFrameSize);
-  }, []);
+  }, [imageLoaded]);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
 
   return (
     <SnapScrollSection className="flex flex-col h-100dvh overflow-hidden">
@@ -82,6 +89,7 @@ const Slide3Media = () => {
                 src={phone_frame}
                 alt="Phone Frame"
                 className="w-[25dvw] max-h-[75dvh] object-contain relative z-10"
+                onLoad={handleImageLoad}
               />
 
               {/* The screenshot that will be clipped */}
@@ -124,6 +132,7 @@ const Slide3Media = () => {
                 src={phone_frame}
                 alt="phone frame"
                 className="relative z-10 w-[60dvw] object-contain"
+                onLoad={handleImageLoad}
               />
 
               {/* The screenshot that will be clipped - mobile */}
