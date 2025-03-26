@@ -1,4 +1,4 @@
-import { SnapScrollSection } from "./SnapScrollSection";
+import SnapScrollSection from "./SnapScrollSection";
 import Image from "next/image";
 import shanghai_full from "@/public/shanghai_full.png";
 import shanghai_part from "@/public/shanghai_part.png";

@@ -1,4 +1,4 @@
-import { SnapScrollSection } from "./SnapScrollSection";
+import SnapScrollSection from "./SnapScrollSection";
 import Image from "next/image";
 import culture_full from "@/public/culture_full.png";
 

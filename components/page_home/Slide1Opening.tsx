@@ -1,4 +1,4 @@
-import { SnapScrollSection } from "./SnapScrollSection";
+import SnapScrollSection from "./SnapScrollSection";
 import Image from "next/image";
 import illu_bucketList from "@/public/illu_bucketList.png";
 import background_decoration from "@/public/background_decoration.png";

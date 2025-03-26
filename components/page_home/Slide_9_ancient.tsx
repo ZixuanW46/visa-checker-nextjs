@@ -1,4 +1,4 @@
-import { SnapScrollSection } from "./SnapScrollSection";
+import SnapScrollSection from "./SnapScrollSection";
 import Image from "next/image";
 import forbidden_city_full from "@/public/forbidden_city_full.jpg";
 import forbidden_city_part from "@/public/forbidden_city_part.png";
