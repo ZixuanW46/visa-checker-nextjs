@@ -8,12 +8,12 @@ import Slide3Media from "@/components/page_home/Slide3Media";
 import Slide4CTA from "@/components/page_home/Slide4CTA";
 import Slide5CTA from "@/components/page_home/Slide5CTA";
 import Slide6History from "@/components/page_home/Slide6History";
-import Slide7City from "@/components/page_home/Slide_7_city";
-import Slide8Nature from "@/components/page_home/Slide_8_nature";
-import Slide9Ancient from "@/components/page_home/Slide_9_ancient";
-import Slide10Tech from "@/components/page_home/Slide_10_tech";
-import Slide11Culture from "@/components/page_home/Slide_11_culture";
-import Slide12Food from "@/components/page_home/Slide_12_food";
+import Slide7City from "@/components/page_home/Slide7City";
+import Slide8Nature from "@/components/page_home/Slide8Nature";
+import Slide9Ancient from "@/components/page_home/Slide9Ancient";
+import Slide10Tech from "@/components/page_home/Slide10Tech";
+import Slide11Culture from "@/components/page_home/Slide11Culture";
+import Slide12Food from "@/components/page_home/Slide12Food";
 
 export default function Home() {
   const [visibleSlideIndex, setVisibleSlideIndex] = React.useState<
