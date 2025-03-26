@@ -1,4 +1,4 @@
-import { SnapScrollSection } from "./snapScrollSection";
+import { SnapScrollSection } from "./SnapScrollSection";
 
 const Slide6History = () => {
   return (

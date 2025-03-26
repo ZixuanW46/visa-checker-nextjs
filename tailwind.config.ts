@@ -13,6 +13,7 @@ export default {
         ssm: "380px",
         custom: "1100px",
         customPlus: "1280px",
+        customBig: "1440px",
       },
       colors: {
         logo: "#FD8613",

@@ -9,7 +9,7 @@ const pt_sans_narrow = PT_Sans_Narrow({
   subsets: ["latin"],
 });
 
-const Slide1Opening = () => {
+const Slide4CTA = () => {
   return (
     <SnapScrollSection className="flex flex-col h-100dvh overflow-hidden">
       <div className="w-full h-[5rem] flex-shrink-0 min-h-[5rem] bg-white hidden md:block"></div>
@@ -28,8 +28,10 @@ const Slide1Opening = () => {
                 CHINA...SHALL I?
               </div>
               <div className="text-[1.5dvw] font-[400] text-white max-w-[45dvw] text-left">
-                Things related to China sounds trendy, no matter it&apos;s
-                RedNote or travelling. But... shall I?
+                But beyond all these, what is China really like?
+                <br />
+                You&apos;ve seen made in China, now it&apos;s time to see China
+                for yourself.
               </div>
             </div>
             <Image
@@ -49,8 +51,10 @@ const Slide1Opening = () => {
                 CHINA...SHALL I?
               </div>
               <div className="text-[2.5vw] font-[400] text-white max-w-[70dvw] text-left">
-                From RedNote to DeepSeek, China&apos;s part of today&apos;s
-                trends. But when it comes to visiting... shall I?
+                But beyond all these, what is China really like?
+                <br />
+                You&apos;ve seen made in China, now it&apos;s time to see China
+                for yourself.
               </div>
             </div>
             <Image
@@ -65,4 +69,4 @@ const Slide1Opening = () => {
   );
 };
 
-export default Slide1Opening;
+export default Slide4CTA;

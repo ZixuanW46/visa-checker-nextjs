@@ -110,7 +110,11 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
           directTo="/transportation"
         />
       </div>
-      <div className="">
+      <div
+        className={`${
+          tab === "home" ? "customBig:w-56 customPlus:w-32 custom:w-12" : ""
+        } flex-shrink-1`}
+      >
         <div className="flex gap-2 custom:hidden">
           <div className=" rounded-full w-[2rem] h-[2rem] flex items-center justify-center">
             <Image
