@@ -1,4 +1,4 @@
-import { SnapScrollSection } from "./SnapScrollSection";
+import SnapScrollSection from "./SnapScrollSection";
 import Image from "next/image";
 import great_wall_full from "@/public/great_wall_full.jpg";
 import great_wall_part from "@/public/great_wall_part.png";
