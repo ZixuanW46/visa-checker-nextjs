@@ -14,11 +14,21 @@ import icon_payment from "@/public/icon_payment.svg";
 import icon_transportation from "@/public/icon_transportation.svg";
 import icon_internet from "@/public/icon_internet.svg";
 
-const NavbarFolded = ({ tab }: { tab: string }) => {
+const NavbarFolded = ({
+  tab,
+  transparent = false,
+}: {
+  tab: string;
+  transparent: boolean;
+}) => {
   return (
     <Dialog>
       <DialogTrigger>
-        <div className="bg-gray-300 rounded-full w-[2rem] h-[2rem] flex items-center justify-center">
+        <div
+          className={`rounded-full w-[2rem] h-[2rem] flex items-center justify-center ${
+            transparent ? "bg-gray-300/30" : "bg-gray-300"
+          }`}
+        >
           <svg
             className="custom:hidden"
             xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +42,9 @@ const NavbarFolded = ({ tab }: { tab: string }) => {
               strokeWidth="2"
               strokeLinecap="square"
               strokeLinejoin="round"
-              className="stroke-gray-100 group-hover:stroke-yellow"
+              className={` group-hover:stroke-yellow ${
+                transparent ? "stroke-white" : "stroke-gray-100"
+              }`}
             />
           </svg>
         </div>

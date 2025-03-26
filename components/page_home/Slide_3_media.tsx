@@ -1,15 +1,57 @@
+"use client";
+
 import { SnapScrollSection } from "./SnapScrollSection";
 import Image from "next/image";
 import phone_frame from "@/public/phone_frame.png";
 import background_decoration from "@/public/background_decoration.png";
 import { PT_Sans_Narrow } from "next/font/google";
 import news_1 from "@/public/news_1.png";
+import { useEffect, useRef, useState } from "react";
 const pt_sans_narrow = PT_Sans_Narrow({
   weight: ["400", "700"],
   subsets: ["latin"],
 });
 
 const Slide3Media = () => {
+  const phoneFrameRef = useRef<HTMLImageElement>(null);
+  const [frameSize, setFrameSize] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    const updateFrameSize = () => {
+      if (phoneFrameRef.current) {
+        const img = phoneFrameRef.current;
+        const containerWidth = img.clientWidth;
+        const containerHeight = img.clientHeight;
+        const naturalWidth = img.naturalWidth;
+        const naturalHeight = img.naturalHeight;
+
+        // Calculate the actual displayed dimensions
+        const aspectRatio = naturalWidth / naturalHeight;
+        let width, height;
+
+        if (containerHeight * aspectRatio > containerWidth) {
+          // Height constrained
+          width = containerWidth;
+          height = containerWidth / aspectRatio;
+        } else {
+          // Width constrained
+          height = containerHeight;
+          width = containerHeight * aspectRatio;
+        }
+
+        setFrameSize({
+          width,
+          height,
+        });
+      }
+    };
+
+    updateFrameSize();
+    window.addEventListener("resize", updateFrameSize);
+
+    return () => window.removeEventListener("resize", updateFrameSize);
+  }, []);
+
   return (
     <SnapScrollSection className="flex flex-col h-100dvh overflow-hidden">
       <div className="w-full h-[5rem] flex-shrink-0 min-h-[5rem] bg-white hidden md:block"></div>
@@ -33,24 +75,22 @@ const Slide3Media = () => {
                 technology or politics.
               </div>
             </div>
-            <div className="relative w-fit mx-auto">
+            <div className="relative max-h-[75dvh] w-fit mx-auto">
               {/* Phone frame overlay - Must be first in DOM order for correct measurement */}
               <Image
+                ref={phoneFrameRef}
                 src={phone_frame}
                 alt="Phone Frame"
-                className="w-[25dvw] object-contain relative z-10"
+                className="w-[25dvw] max-h-[75dvh] object-contain relative z-10"
               />
 
               {/* The screenshot that will be clipped */}
               <div
-                className="absolute overflow-hidden"
+                className="absolute overflow-hidden left-[50%] translate-x-[-50%] top-0 p-[2px]"
                 style={{
-                  width: "99%", // Width relative to phone frame
-                  height: "99%", // Height relative to phone frame
-                  position: "absolute",
-                  top: "2px", // Position relative to phone frame
-                  left: "2px", // Position relative to phone frame
-                  borderRadius: "4.5dvw", // Phone screen rounded corners
+                  width: `${frameSize.width}px`,
+                  height: `${frameSize.height}px`,
+                  borderRadius: "14%",
                   zIndex: 5,
                 }}
               >
@@ -58,7 +98,6 @@ const Slide3Media = () => {
                   src={news_1}
                   alt="News"
                   className="object-contain w-full h-full"
-                  fill
                 />
               </div>
             </div>
@@ -96,7 +135,7 @@ const Slide3Media = () => {
                   position: "absolute",
                   top: "2px", // Position relative to phone frame
                   left: "2px", // Position relative to phone frame
-                  borderRadius: "8.5dvw", // Phone screen rounded corners
+                  borderRadius: "15%", // Phone screen rounded corners (15% of phone frame width)
                   zIndex: 5,
                 }}
               >

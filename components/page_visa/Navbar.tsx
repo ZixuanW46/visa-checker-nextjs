@@ -1,5 +1,6 @@
 import Image from "next/image";
 import capyLogo from "@/public/capy_logo.svg";
+import capyLogoWhite from "@/public/capy_logo_white.svg";
 import NavbarTab from "./NavbarTab";
 import icon_home from "@/public/icon_home.svg";
 import icon_visa from "@/public/icon_visa.svg";
@@ -12,30 +13,45 @@ import { Inter } from "next/font/google";
 interface NavbarProps {
   tab?: "home" | "visa" | "payment" | "internet" | "transportation";
   className?: string;
+  transparent?: boolean;
 }
 
 const inter = Inter({
   subsets: ["latin"],
 });
 
-const Navbar = ({ className, tab = "home" }: NavbarProps) => {
+const Navbar = ({
+  className,
+  tab = "home",
+  transparent = false,
+}: NavbarProps) => {
   return (
     <div
-      className={`flex bg-white justify-between items-center px-3 md:px-8 h-[4rem] md:h-20 w-full flex-shrink-0 border-t md:border-t-0 border-gray-200 ${className}`}
+      className={`flex ${
+        transparent ? "bg-transparent" : "bg-white"
+      } justify-between items-center px-3 md:px-8 h-[4rem] md:h-20 w-full flex-shrink-0 border-t md:border-t-0 border-gray-200 ${className}`}
     >
       <div className="flex gap-3 md:min-w-56 items-center">
         <Image
-          src={capyLogo}
+          src={transparent ? capyLogoWhite : capyLogo}
           alt="capy logo"
           width={22}
           height={22}
           className="md:w-[25px] md:h-[25px]"
         />
         <p
-          className={`text-lg md:text-2xl font-extrabold pt-1 text-logo ${inter.className}`}
+          className={`${
+            transparent ? "text-white" : "text-logo"
+          } text-lg md:text-2xl font-extrabold pt-1 ${inter.className}`}
         >
           <span className="hidden md:inline">CAPY</span>{" "}
-          <span className="font-medium text-black">China 101</span>
+          <span
+            className={`${
+              transparent ? "text-white" : "text-black"
+            } font-medium`}
+          >
+            China 101
+          </span>
         </p>
       </div>
       <div className="hidden custom:flex gap-2 md:gap-3">
@@ -46,12 +62,15 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
               alt="home icon"
               width={15}
               height={15}
-              className="md:w-[20px] md:h-[20px]"
+              className={`md:w-[20px] md:h-[20px] ${
+                transparent ? "brightness-0 invert" : ""
+              }`}
             />
           }
           name="Home"
           active={tab === "home"}
           directTo="/"
+          transparent={transparent}
         />
         <NavbarTab
           icon={
@@ -60,12 +79,15 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
               alt="visa icon"
               width={15}
               height={15}
-              className="md:w-[20px] md:h-[20px]"
+              className={`md:w-[20px] md:h-[20px] ${
+                transparent ? "brightness-0 invert" : ""
+              }`}
             />
           }
           name="Visa"
           active={tab === "visa"}
           directTo="/visa"
+          transparent={transparent}
         />
         <NavbarTab
           icon={
@@ -74,12 +96,15 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
               alt="payment icon"
               width={15}
               height={15}
-              className="md:w-[20px] md:h-[20px]"
+              className={`md:w-[20px] md:h-[20px] ${
+                transparent ? "brightness-0 invert" : ""
+              }`}
             />
           }
           name="Payment"
           active={tab === "payment"}
           directTo="/payment"
+          transparent={transparent}
         />
         <NavbarTab
           icon={
@@ -88,12 +113,15 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
               alt="internet icon"
               width={15}
               height={15}
-              className="md:w-[20px] md:h-[20px]"
+              className={`md:w-[20px] md:h-[20px] ${
+                transparent ? "brightness-0 invert" : ""
+              }`}
             />
           }
           name="Internet"
           active={tab === "internet"}
           directTo="/internet"
+          transparent={transparent}
         />
         <NavbarTab
           icon={
@@ -102,12 +130,15 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
               alt="transportation icon"
               width={15}
               height={15}
-              className="md:w-[20px] md:h-[20px]"
+              className={`md:w-[20px] md:h-[20px] ${
+                transparent ? "brightness-0 invert" : ""
+              }`}
             />
           }
           name="Transportation"
           active={tab === "transportation"}
           directTo="/transportation"
+          transparent={transparent}
         />
       </div>
       <div
@@ -122,10 +153,12 @@ const Navbar = ({ className, tab = "home" }: NavbarProps) => {
               alt="home icon"
               width={20}
               height={20}
-              className="md:w-[20px] md:h-[20px]"
+              className={`md:w-[20px] md:h-[20px] ${
+                transparent ? "brightness-0 invert" : ""
+              }`}
             />
           </div>
-          <NavbarFolded tab={tab} />
+          <NavbarFolded tab={tab} transparent={transparent} />
         </div>
       </div>
     </div>
