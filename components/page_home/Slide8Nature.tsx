@@ -1,4 +1,4 @@
-import SnapScrollSection from "./SnapScrollSection";
+import SnapScrollSection from "@/components/page_home/SnapScrollSection";
 import Image from "next/image";
 import zhangjiajie_full from "@/public/zhangjiajie_full.jpg";
 import zhangjiajie_part from "@/public/zhangjiajie_part.png";

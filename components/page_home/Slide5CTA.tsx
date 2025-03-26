@@ -1,4 +1,4 @@
-import SnapScrollSection from "./SnapScrollSection";
+import SnapScrollSection from "@/components/page_home/SnapScrollSection";
 import Image from "next/image";
 import lock from "@/public/lock.svg";
 

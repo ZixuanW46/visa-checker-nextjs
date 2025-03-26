@@ -1,4 +1,4 @@
-import SnapScrollSection from "./SnapScrollSection";
+import SnapScrollSection from "@/components/page_home/SnapScrollSection";
 import Image from "next/image";
 import background_decoration from "@/public/background_decoration.png";
 import good_1 from "@/public/chinese_good_1.png";

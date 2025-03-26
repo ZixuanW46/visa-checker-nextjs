@@ -1,6 +1,6 @@
 "use client";
 
-import SnapScrollSection from "./SnapScrollSection";
+import SnapScrollSection from "@/components/page_home/SnapScrollSection";
 import Image from "next/image";
 import phone_frame from "@/public/phone_frame.png";
 import background_decoration from "@/public/background_decoration.png";
