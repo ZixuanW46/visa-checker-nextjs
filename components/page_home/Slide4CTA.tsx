@@ -42,7 +42,7 @@ const Slide4CTA = () => {
           </div>
           <div
             className="w-full h-full md:hidden flex flex-col justify-start gap-y-5
-           items-center z-10 relative pt-[23dvh]"
+           items-center z-10 relative pt-[17dvh]"
           >
             <div className="w-full h-[20dvh] flex flex-col justify-center items-center mb-[2dvh]">
               <div
@@ -50,7 +50,7 @@ const Slide4CTA = () => {
               >
                 CHINA...SHALL I?
               </div>
-              <div className="text-[2.5vw] font-[400] text-white max-w-[70dvw] text-left">
+              <div className="text-[3.3vw] font-[400] text-white max-w-[70dvw] text-center">
                 But beyond all these, what is China really like?
                 <br />
                 You&apos;ve seen made in China, now it&apos;s time to see China
