@@ -24,6 +24,7 @@ const Slide2Goods = () => {
             src={background_decoration}
             alt="background_decoration"
             className="absolute top-1/2 left-0 w-full object-cover opacity-100 -translate-y-1/2"
+            loading="eager"
           />
           <div className="w-full h-full hidden md:flex justify-center items-center z-10 relative p-2">
             <div className="w-[55dvw] h-full flex flex-col justify-center items-center">
@@ -78,16 +79,19 @@ const Goods = () => {
           src={good_1}
           alt="good_1"
           className="object-contain max-h-[30%] w-auto"
+          loading="eager"
         />
         <Image
           src={good_2}
           alt="good_2"
           className="object-contain max-h-[20%] w-auto"
+          loading="eager"
         />
         <Image
           src={good_3}
           alt="good_3"
           className="object-contain max-h-[25%]  w-auto"
+          loading="eager"
         />
       </div>
       <div className="w-1/2 h-full flex flex-col items-center justify-evenly">
@@ -95,16 +99,19 @@ const Goods = () => {
           src={good_4}
           alt="good_4"
           className="object-contain max-h-[16%] w-auto"
+          loading="eager"
         />
         <Image
           src={good_5}
           alt="good_5"
           className="object-contain max-h-[36%] w-auto"
+          loading="eager"
         />
         <Image
           src={good_6}
           alt="good_6"
           className="object-contain max-h-[10%] w-auto"
+          loading="eager"
         />
       </div>
     </div>
@@ -119,16 +126,19 @@ const Goods_mobile = () => {
           src={good_1}
           alt="good_1"
           className="object-contain max-h-[30%] max-w-[25dvw] w-auto"
+          loading="eager"
         />
         <Image
           src={good_2}
           alt="good_2"
           className="object-contain max-h-[20%] w-auto"
+          loading="eager"
         />
         <Image
           src={good_3}
           alt="good_3"
           className="object-contain max-h-[25%]  w-auto"
+          loading="eager"
         />
       </div>
       <div className="w-1/2 h-full flex flex-col items-center justify-evenly">
@@ -136,16 +146,19 @@ const Goods_mobile = () => {
           src={good_4}
           alt="good_4"
           className="object-contain max-h-[16%] w-auto"
+          loading="eager"
         />
         <Image
           src={good_5}
           alt="good_5"
           className="object-contain max-h-[36%] w-auto"
+          loading="eager"
         />
         <Image
           src={good_6}
           alt="good_6"
           className="object-contain max-h-[10%] w-auto"
+          loading="eager"
         />
       </div>
     </div>

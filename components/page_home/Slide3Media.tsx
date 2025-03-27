@@ -68,6 +68,7 @@ const Slide3Media = () => {
             src={background_decoration}
             alt="background_decoration"
             className="absolute top-1/2 left-0 w-full object-cover opacity-100 -translate-y-1/2"
+            loading="eager"
           />
           <div className="w-full h-full hidden md:flex items-center z-10 relative p-2">
             <div className="w-[55dvw] h-full flex flex-col justify-center items-center">
@@ -90,6 +91,7 @@ const Slide3Media = () => {
                 alt="Phone Frame"
                 className="w-[25dvw] max-h-[75dvh] object-contain relative z-10"
                 onLoad={handleImageLoad}
+                loading="eager"
               />
 
               {/* The screenshot that will be clipped */}
@@ -106,6 +108,7 @@ const Slide3Media = () => {
                   src={news_1}
                   alt="News"
                   className="object-contain w-full h-full"
+                  loading="eager"
                 />
               </div>
             </div>
@@ -133,18 +136,19 @@ const Slide3Media = () => {
                 alt="phone frame"
                 className="relative z-10 w-[60dvw] object-contain"
                 onLoad={handleImageLoad}
+                loading="eager"
               />
 
               {/* The screenshot that will be clipped - mobile */}
               <div
                 className="absolute overflow-hidden"
                 style={{
-                  width: "99%", // Width relative to phone frame
-                  height: "99%", // Height relative to phone frame
+                  width: "99.5%", // Width relative to phone frame
+                  height: "99.5%", // Height relative to phone frame
                   position: "absolute",
-                  top: "2px", // Position relative to phone frame
-                  left: "2px", // Position relative to phone frame
-                  borderRadius: "15%", // Phone screen rounded corners (15% of phone frame width)
+                  top: "1.5px", // Position relative to phone frame
+                  left: "1.5px", // Position relative to phone frame
+                  borderRadius: "13.5%", // Phone screen rounded corners (15% of phone frame width)
                   zIndex: 5,
                 }}
               >
@@ -153,6 +157,7 @@ const Slide3Media = () => {
                   alt="App Screenshot"
                   className="object-contain w-full h-full"
                   fill
+                  loading="eager"
                 />
               </div>
             </div>

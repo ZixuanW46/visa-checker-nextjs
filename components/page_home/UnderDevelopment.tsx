@@ -31,6 +31,7 @@ const UnderDevelopment = () => {
           src={comingSoon}
           alt="coming soon"
           className="w-5/6 pb-10 object-contain"
+          loading="eager"
         />
       </div>
     </div>

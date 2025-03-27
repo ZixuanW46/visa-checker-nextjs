@@ -19,6 +19,7 @@ const Slide4CTA = () => {
             src={background_decoration}
             alt="background_decoration"
             className="absolute top-1/2 left-0 w-full object-cover opacity-100 -translate-y-1/2"
+            loading="eager"
           />
           <div className="w-full h-full hidden md:flex justify-center items-center z-10 relative p-2">
             <div className="w-[55dvw] h-full flex flex-col justify-center items-center">
@@ -38,6 +39,7 @@ const Slide4CTA = () => {
               src={illu_bucketList}
               alt="travel bucket list"
               className="w-2/5 max-h-[75dvh] object-contain object-right p-5 mt-[7%]"
+              loading="eager"
             />
           </div>
           <div
@@ -61,6 +63,7 @@ const Slide4CTA = () => {
               src={illu_bucketList}
               alt="travel bucket list"
               className="max-w-[70dvw] max-h-[40dvh] object-contain "
+              loading="eager"
             />
           </div>
         </div>

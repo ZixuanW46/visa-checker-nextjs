@@ -7,7 +7,12 @@ const Slide5CTA = () => {
     <SnapScrollSection className="flex flex-col h-100dvh overflow-hidden">
       <div className="w-full h-[5rem] flex-shrink-0 min-h-[5rem] bg-white hidden md:block"></div>
       <div className="w-full flex-1 flex flex-col items-center justify-center md:pt-2 md:pb-8 md:px-8">
-        <Image src={lock} alt="lock" className="w-[12dvw] md:w-[8dvw]" />
+        <Image
+          src={lock}
+          alt="lock"
+          className="w-[12dvw] md:w-[8dvw]"
+          loading="eager"
+        />
         <div
           className="text-[9dvw] md:text-[7dvw] font-extrabold text-center mt-[2dvh]"
           style={{
