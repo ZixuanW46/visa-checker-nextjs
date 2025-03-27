@@ -14,6 +14,7 @@ import Slide9Ancient from "@/components/page_home/Slide9Ancient";
 import Slide10Tech from "@/components/page_home/Slide10Tech";
 import Slide11Culture from "@/components/page_home/Slide11Culture";
 import Slide12Food from "@/components/page_home/Slide12Food";
+import Slide13FinalCTA from "@/components/page_home/Slide13FinalCTA";
 
 export default function Home() {
   const [visibleSlideIndex, setVisibleSlideIndex] = React.useState<
@@ -99,6 +100,9 @@ export default function Home() {
         </div>
         <div ref={setRef(12)}>
           <Slide12Food />
+        </div>
+        <div ref={setRef(13)}>
+          <Slide13FinalCTA />
         </div>
       </div>
       <div className="w-full fixed bottom-0 left-0 z-[100]">
