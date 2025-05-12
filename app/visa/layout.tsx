@@ -5,13 +5,13 @@ import MobileTopPannel from "@/components/page_visa/MobileTopPannel";
 export const metadata: Metadata = {
   title: "Travel With CAPY",
   description: "The best travel companion",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-    minimumScale: 1,
-    userScalable: false,
-  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({

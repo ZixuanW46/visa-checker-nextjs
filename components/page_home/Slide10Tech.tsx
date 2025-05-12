@@ -19,7 +19,7 @@ const Slide10Tech = () => {
           className="w-full h-full object-cover object-[46%_43%] md:object-[50%_50%] absolute bottom-0 left-0 z-20"
           loading="eager"
         />
-        <div className="absolute w-full top-[43%] md:top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[15dvw] md:text-[8dvw] font-extrabold text-center text-white z-10">
+        <div className="absolute w-full top-[43%] md:top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[15dvw] md:text-[8dvw] font-extrabold text-center text-white z-10 font-helvitica">
           <span className="md:hidden">
             The 2050
             <span className="block mt-[-1.6rem]">Experience</span>

@@ -8,17 +8,12 @@ import icon_payment from "@/public/icon_payment.svg";
 import icon_transportation from "@/public/icon_transportation.svg";
 import icon_internet from "@/public/icon_internet.svg";
 import NavbarFolded from "./NavbarFolded";
-import { Inter } from "next/font/google";
 
 interface NavbarProps {
   tab?: "home" | "visa" | "payment" | "internet" | "transportation";
   className?: string;
   transparent?: boolean;
 }
-
-const inter = Inter({
-  subsets: ["latin"],
-});
 
 const Navbar = ({
   className,
@@ -42,7 +37,7 @@ const Navbar = ({
         <p
           className={`${
             transparent ? "text-white" : "text-logo"
-          } text-lg md:text-2xl font-extrabold pt-1 ${inter.className}`}
+          } text-lg md:text-2xl font-extrabold pt-1 font-inter`}
         >
           <span className="hidden md:inline">CAPY</span>{" "}
           <span

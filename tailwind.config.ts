@@ -15,6 +15,12 @@ export default {
         customPlus: "1280px",
         customBig: "1440px",
       },
+      fontFamily: {
+        "pt-sans-narrow": ["var(--font-pt-sans-narrow)"],
+        manrope: ["var(--font-manrope)"],
+        inter: ["var(--font-inter)"],
+        helvetica: ["var(--font-helvetica"],
+      },
       colors: {
         logo: "#FD8613",
         themePrimary: "#084712",

@@ -12,7 +12,7 @@ const Slide12Food = () => {
           className="w-full h-full object-cover object-center"
           loading="eager"
         />
-        <div className="absolute w-full top-[50%] md:top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[15dvw] md:text-[8dvw] font-extrabold text-center text-white z-10">
+        <div className="absolute w-full top-[50%] md:top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[15dvw] md:text-[8dvw] font-extrabold text-center text-white z-10 font-helvitica">
           <span className="md:hidden">
             Feasts
             <span className="block mt-[-1.6rem]">of Flavor</span>

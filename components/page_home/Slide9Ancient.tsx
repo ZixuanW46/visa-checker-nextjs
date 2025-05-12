@@ -19,7 +19,7 @@ const Slide9Ancient = () => {
           className="w-full h-full object-cover object-[50%_27.5%] md:object-[50%_30%] absolute bottom-0 left-0 z-20"
           loading="eager"
         />
-        <div className="absolute w-full top-[27.5%] md:top-[30%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[15dvw] md:text-[8dvw] font-extrabold text-center text-white z-10">
+        <div className="absolute w-full top-[27.5%] md:top-[30%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-[15dvw] md:text-[8dvw] font-extrabold text-center text-white z-10 font-helvitica">
           <span className="md:hidden">
             Ancient
             <span className="block mt-[-1.6rem]">Echoes</span>

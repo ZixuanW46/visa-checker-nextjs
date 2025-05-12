@@ -3,12 +3,6 @@ import Image from "next/image";
 import background_decoration from "@/public/background_decoration.png";
 import final_cta_1 from "@/public/final_CTA_1.svg";
 import final_cta_2 from "@/public/final_CTA_2.svg";
-import { PT_Sans_Narrow } from "next/font/google";
-
-const pt_sans_narrow = PT_Sans_Narrow({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-});
 
 const Slide1Opening = () => {
   return (
@@ -24,9 +18,7 @@ const Slide1Opening = () => {
           />
           <div className="w-full h-full hidden md:flex justify-center items-center z-10 relative p-2 overflow-hidden">
             <div className="w-fit h-full flex flex-col justify-center items-center">
-              <div
-                className={`text-[9dvw] font-bold text-white ${pt_sans_narrow.className} relative`}
-              >
+              <div className="text-[9dvw] font-bold text-white font-pt-sans-narrow relative">
                 CHINA...SHALL I?
                 <Image
                   src={final_cta_1}
@@ -48,9 +40,7 @@ const Slide1Opening = () => {
            items-center z-10 relative pt-[28dvh] overflow-hidden"
           >
             <div className="w-fit h-fit flex flex-col justify-center items-center">
-              <div
-                className={`flex flex-col text-[18dvw] font-bold text-white ${pt_sans_narrow.className} relative`}
-              >
+              <div className="text-[9dvw] font-bold text-white font-pt-sans-narrow relative">
                 <span className="">CHINA...</span>
                 <span className="block">SHALL I?</span>
                 <Image

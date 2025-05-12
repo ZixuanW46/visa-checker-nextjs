@@ -7,12 +7,6 @@ import good_3 from "@/public/chinese_good_3.png";
 import good_4 from "@/public/chinese_good_4.png";
 import good_5 from "@/public/chinese_good_5.png";
 import good_6 from "@/public/chinese_good_6.png";
-import { PT_Sans_Narrow } from "next/font/google";
-
-const pt_sans_narrow = PT_Sans_Narrow({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-});
 
 const Slide2Goods = () => {
   return (
@@ -28,9 +22,7 @@ const Slide2Goods = () => {
           />
           <div className="w-full h-full hidden md:flex justify-center items-center z-10 relative p-2">
             <div className="w-[55dvw] h-full flex flex-col justify-center items-center">
-              <div
-                className={`text-[7.5dvw] font-bold text-white ${pt_sans_narrow.className}`}
-              >
+              <div className="text-[7.5dvw] font-bold text-white font-pt-sans-narrow">
                 CHINA...SHALL I?
               </div>
               <div className="text-[1.5dvw] font-[400] text-white max-w-[45dvw] text-left">
@@ -48,9 +40,7 @@ const Slide2Goods = () => {
            items-center z-10 relative pt-[17dvh]"
           >
             <div className="w-full h-[20dvh] flex flex-col justify-center items-center mb-[2dvh]">
-              <div
-                className={`text-[12dvw] font-bold text-white ${pt_sans_narrow.className}`}
-              >
+              <div className="text-[12dvw] font-bold text-white font-pt-sans-narrow">
                 CHINA...SHALL I?
               </div>
               <div className="text-[3.3vw] font-[400] text-white max-w-[70dvw] text-center">
