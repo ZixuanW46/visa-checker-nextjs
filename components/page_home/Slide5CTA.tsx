@@ -23,7 +23,7 @@ const Slide5CTA = () => {
             key={isInView ? "inView" : "outOfView"}
             initial={{ pathLength: 1 }}
             animate={isInView && { pathLength: 0.6 }}
-            transition={{ duration: 3, delay: 1.5 }}
+            transition={{ duration: 2, delay: 0.6 }}
             d="M23.3333 33.3334V23.3334C23.3333 18.9131 25.0892 14.6739 28.2148 11.5483C31.3404 8.4227 35.5796 6.66675 39.9999 6.66675C44.4202 6.66675 48.6594 8.4227 51.785 11.5483C54.9106 14.6739 56.6666 18.9131 56.6666 23.3334V33.3334"
             stroke="#4DBAB9"
             strokeWidth="7"

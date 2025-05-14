@@ -86,11 +86,11 @@ const Slide1Opening = () => {
                     <motion.path
                       key={isInView ? "inView4" : "outOfView4"}
                       initial={{
-                        pathLength: 0,
+                        opacity: 0,
                       }}
                       animate={
                         isInView && {
-                          pathLength: 1,
+                          opacity: 1,
                         }
                       }
                       transition={{ duration: 0.5, delay: 5 }}
