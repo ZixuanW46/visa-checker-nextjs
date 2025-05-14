@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 interface SnapScrollSectionProps {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
 }
 

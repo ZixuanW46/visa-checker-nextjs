@@ -154,3 +154,5 @@ const Goods_mobile = () => {
     </div>
   );
 };
+
+export { Goods, Goods_mobile };

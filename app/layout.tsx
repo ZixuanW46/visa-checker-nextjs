@@ -1,4 +1,4 @@
-import { manrope, ptSansNarrow, inter } from "./fonts";
+import { manrope, ptSansNarrow, inter, helvetica } from "./fonts";
 import type { Metadata } from "next";
 import "./globals.css";
 import { AntdProvider } from "@/components/providers/AntdProvider";
@@ -17,9 +17,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${ptSansNarrow.variable} ${inter.variable}`}
+      className={`${manrope.variable} ${ptSansNarrow.variable} ${inter.variable} ${helvetica.variable}`}
     >
-      <body className={manrope.className}>
+      <body className="font-manrope">
         <NuqsAdapter>
           <AntdProvider>{children}</AntdProvider>
         </NuqsAdapter>
