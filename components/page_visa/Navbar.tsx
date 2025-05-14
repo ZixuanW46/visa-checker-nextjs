@@ -8,6 +8,7 @@ import icon_payment from "@/public/icon_payment.svg";
 import icon_transportation from "@/public/icon_transportation.svg";
 import icon_internet from "@/public/icon_internet.svg";
 import NavbarFolded from "./NavbarFolded";
+import { futura } from "@/app/fonts";
 
 interface NavbarProps {
   tab?: "home" | "visa" | "payment" | "internet" | "transportation";
@@ -37,9 +38,9 @@ const Navbar = ({
         <p
           className={`${
             transparent ? "text-white" : "text-logo"
-          } text-lg md:text-2xl font-extrabold pt-1 font-inter`}
+          } text-lg md:text-2xl pt-1 ${futura.className}`}
         >
-          <span className="hidden md:inline">CAPY</span>{" "}
+          <span className="font-bold hidden md:inline">CAPY</span>{" "}
           <span
             className={`${
               transparent ? "text-white" : "text-black"

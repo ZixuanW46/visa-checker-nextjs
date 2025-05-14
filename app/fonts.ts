@@ -30,3 +30,24 @@ export const helvetica = localFont({
   src: "../public/fonts/Helvetica.ttf",
   variable: "--font-helvetica",
 });
+
+export const futura = localFont({
+  src: [
+    {
+      path: "../public/fonts/futura-medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/futura-bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/futura-extrabold.ttf",
+      weight: "800",
+      style: "normal",
+    },
+  ],
+  variable: "--font-futura",
+});

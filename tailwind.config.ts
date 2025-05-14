@@ -19,7 +19,8 @@ export default {
         "pt-sans-narrow": ["var(--font-pt-sans-narrow)"],
         manrope: ["var(--font-manrope)"],
         inter: ["var(--font-inter)"],
-        helvetica: ["var(--font-helvetica"],
+        helvetica: ["var(--font-helvetica)"],
+        futura: ["var(--font-futura)"],
       },
       colors: {
         logo: "#FD8613",

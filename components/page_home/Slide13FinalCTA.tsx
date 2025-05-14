@@ -97,6 +97,7 @@ const Slide1Opening = () => {
                       d="M272.451 65.361C273.146 64.7523 274.13 63.18 272.451 64.0198"
                       stroke="#304139"
                       strokeWidth="12"
+                      strokeLinecap="round"
                     />
                   </svg>
                 </div>
