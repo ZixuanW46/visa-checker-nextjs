@@ -43,7 +43,7 @@ export default function Home() {
   }, []);
 
   // Define which slides should have transparent navbar (by their index)
-  const transparentSlides = [5, 6, 7, 8, 9, 10, 11, 12]; // 0-based index
+  const transparentSlides = [6, 7, 8, 9, 10, 11, 12]; // 0-based index
 
   const setRef = (index: number) => (el: HTMLDivElement | null) => {
     slideRefs.current[index] = el;
@@ -83,13 +83,14 @@ export default function Home() {
       </div>
       <IntroSection containerRef={ref} />
 
-      <div ref={setRef(4)}>
+      <div ref={setRef(5)}>
         <Slide5CTA />
       </div>
-      <div ref={setRef(5)}>
+
+      <div ref={setRef(6)}>
         <Slide6History />
       </div>
-      <div ref={setRef(6)}>
+      <div ref={setRef(7)}>
         <Slide7City />
       </div>
       <div ref={setRef(8)}>
@@ -107,6 +108,7 @@ export default function Home() {
       <div ref={setRef(12)}>
         <Slide12Food />
       </div>
+
       <div ref={setRef(13)}>
         <Slide13FinalCTA />
       </div>

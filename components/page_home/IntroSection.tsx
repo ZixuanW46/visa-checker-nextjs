@@ -23,10 +23,11 @@ const IntroSection = ({ containerRef }: IntroSectionProps) => {
 
   const [pageVisible, setPageVisible] = useState(1);
   const [previousPage, setPreviousPage] = useState(1);
-
+  /*
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     console.log("Page scroll: ", latest);
   });
+*/
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (0 <= latest && latest < 1 / 12) {

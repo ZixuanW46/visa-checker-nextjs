@@ -1,19 +1,29 @@
 import SnapScrollSection from "@/components/page_home/SnapScroll";
-import Image from "next/image";
-import lock from "@/public/lock.svg";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const Slide5CTA = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
   return (
     <SnapScrollSection className="flex flex-col h-100dvh overflow-hidden">
       <div className="w-full h-[5rem] flex-shrink-0 min-h-[5rem] bg-white hidden md:block"></div>
-      <div className="w-full flex-1 flex flex-col items-center justify-center md:pt-2 md:pb-8 md:px-8">
+      <div
+        ref={ref}
+        className="w-full flex-1 flex flex-col items-center justify-center md:pt-2 md:pb-8 md:px-8"
+      >
         <svg
           className="w-[12dvw] md:w-[8dvw] h-auto"
           viewBox="0 0 80 80"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
+          <motion.path
+            key={isInView ? "inView" : "outOfView"}
+            initial={{ pathLength: 1 }}
+            animate={isInView && { pathLength: 0.6 }}
+            transition={{ duration: 3, delay: 1.5 }}
             d="M23.3333 33.3334V23.3334C23.3333 18.9131 25.0892 14.6739 28.2148 11.5483C31.3404 8.4227 35.5796 6.66675 39.9999 6.66675C44.4202 6.66675 48.6594 8.4227 51.785 11.5483C54.9106 14.6739 56.6666 18.9131 56.6666 23.3334V33.3334"
             stroke="#4DBAB9"
             strokeWidth="7"
