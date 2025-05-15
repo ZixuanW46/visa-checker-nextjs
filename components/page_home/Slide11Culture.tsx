@@ -20,7 +20,11 @@ const Slide11Culture = () => {
     console.log("Page scroll: ", latest);
   });
 
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], ["16vh", "0vh", "16vh"]);
+  const y = useTransform(
+    scrollYProgress,
+    [0, 0.43, 0.57, 1],
+    ["16vh", "0vh", "0vh", "16vh"]
+  );
 
   return (
     <SnapScrollSection className="flex flex-col h-100dvh overflow-hidden">

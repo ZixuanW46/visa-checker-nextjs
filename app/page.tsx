@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import Navbar from "@/components/page_visa/Navbar";
-import Slide5CTA from "@/components/page_home/Slide5CTA";
+import Slide5CTA from "@/components/page_home/Slide5CTA_copy";
 import Slide6History from "@/components/page_home/Slide6History";
 import Slide7City from "@/components/page_home/Slide7City";
 import Slide8Nature from "@/components/page_home/Slide8Nature";
@@ -11,7 +11,7 @@ import Slide10Tech from "@/components/page_home/Slide10Tech";
 import Slide11Culture from "@/components/page_home/Slide11Culture";
 import Slide12Food from "@/components/page_home/Slide12Food";
 import Slide13FinalCTA from "@/components/page_home/Slide13FinalCTA";
-import IntroSection from "@/components/page_home/IntroSection";
+import IntroSection from "@/components/page_home/IntroSection_copy";
 
 export default function Home() {
   const [visibleSlideIndex, setVisibleSlideIndex] = React.useState<
@@ -53,16 +53,11 @@ export default function Home() {
 
   useEffect(() => {
     // Add snap classes to html tag when landing page mounts
-    document.documentElement.classList.add(
-      "snap-y",
-      "snap-mandatory",
-      "scroll-smooth"
-    );
+    document.documentElement.classList.add("snap-mandatory", "scroll-smooth");
 
     // Remove snap classes when landing page unmounts
     return () => {
       document.documentElement.classList.remove(
-        "snap-y",
         "snap-mandatory",
         "scroll-smooth"
       );
@@ -81,7 +76,7 @@ export default function Home() {
           }
         />
       </div>
-      <IntroSection containerRef={ref} />
+      <IntroSection />
 
       <div ref={setRef(5)}>
         <Slide5CTA />

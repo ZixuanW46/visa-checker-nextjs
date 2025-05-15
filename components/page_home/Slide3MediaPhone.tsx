@@ -18,7 +18,7 @@ const Slide3MediaPhone = ({ scrollYProgress }: Slide3MediaPhoneProps) => {
   // Transform scroll progress to x position
   const x = useTransform(
     scrollYProgress,
-    [2 / 6, 3 / 6, 4 / 6], // input range
+    [0.45, 0.65, 0.85], // input range
     [0, -frameSize.width * 1.036, -frameSize.width * 1.036 * 2] // output range
   );
 

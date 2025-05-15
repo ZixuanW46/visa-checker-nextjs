@@ -2,12 +2,7 @@ import SnapScrollSection from "@/components/page_home/SnapScroll";
 import Image from "next/image";
 import great_wall_full from "@/public/great_wall_full.jpg";
 import great_wall_part from "@/public/great_wall_part.png";
-import {
-  useScroll,
-  useTransform,
-  useMotionValueEvent,
-  motion,
-} from "framer-motion";
+import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
 
 const Slide6History = () => {
@@ -17,11 +12,11 @@ const Slide6History = () => {
     offset: ["start end", "end start"],
   });
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("Page scroll: ", latest);
-  });
-
-  const y = useTransform(scrollYProgress, [0, 0.5, 1], ["16vh", "0vh", "16vh"]);
+  const y = useTransform(
+    scrollYProgress,
+    [0, 0.43, 0.57, 1],
+    ["16vh", "0vh", "0vh", "16vh"]
+  );
 
   return (
     <SnapScrollSection className="flex flex-col h-100dvh overflow-hidden">
