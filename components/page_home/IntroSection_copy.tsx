@@ -3,6 +3,7 @@
 import SnapScrollSection from "@/components/page_home/SnapScroll";
 import Image from "next/image";
 import illu_bucketList from "@/public/illu_bucketList.png";
+import illu_bucketList_after from "@/public/illu_bucketList_after.png";
 import background_decoration from "@/public/background_decoration.png";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -91,7 +92,7 @@ const IntroSection = () => {
               loading="eager"
             />
             <div className="w-full h-full hidden md:flex justify-center items-center z-10 relative p-2">
-              <div className="w-[55dvw] h-full flex flex-col justify-center items-center pb-[8rem]">
+              <div className="w-[50dvw] h-full ml-[5dvw] flex flex-col justify-center items-center pb-[8rem]">
                 <div className="text-[7.5dvw] font-bold text-white font-pt-sans-narrow">
                   CHINA...SHALL I?
                 </div>
@@ -136,7 +137,7 @@ const IntroSection = () => {
                   </motion.div>
                 </div>
               </div>
-              <div className="w-[45dvw] h-fit relative">
+              <div className="w-[40dvw] h-fit relative">
                 <motion.div
                   initial={{ opacity: 0 }}
                   style={{ opacity: opacity_1 }}
@@ -173,7 +174,7 @@ const IntroSection = () => {
                   className="w-full h-fit pl-[3rem] absolute top-1/2 -translate-y-1/2 left-0"
                 >
                   <Image
-                    src={illu_bucketList}
+                    src={illu_bucketList_after}
                     alt="travel bucket list"
                     className="w-[35dvw] max-h-[75dvh] object-contain object-center pt-[5%]"
                     loading="eager"
@@ -267,7 +268,7 @@ const IntroSection = () => {
                   className="w-fit h-fit absolute top-0 left-1/2 -translate-x-1/2"
                 >
                   <Image
-                    src={illu_bucketList}
+                    src={illu_bucketList_after}
                     alt="travel bucket list"
                     className="max-w-[70dvw] max-h-[40dvh] object-contain "
                     loading="eager"

@@ -59,7 +59,7 @@ const Slide5CTA = () => {
       <div className="w-full h-[5rem] flex-shrink-0 min-h-[5rem] bg-white hidden md:block"></div>
       <motion.div
         style={{ y }}
-        className="w-full sticky top-[30dvh] h-[65dvh] flex flex-col items-center justify-start md:pt-2 md:pb-8 md:px-8"
+        className="w-full sticky top-[30vh] md:top-[27vh] h-[40vh] md:h-[100vh] flex flex-col items-center justify-start md:pt-2 md:pb-8 md:px-8"
       >
         <motion.svg
           className="w-[12dvw] md:w-[8dvw] h-auto"
