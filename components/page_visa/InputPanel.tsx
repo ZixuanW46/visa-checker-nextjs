@@ -265,7 +265,7 @@ const InputPanel = forwardRef(
             </Button>
           </div>
           <div className="text-gray-200 text-xs font-light mt-3">
-            © 2024 Capy Ltd All rights reserved
+            © 2025 Capy Guide All rights reserved
           </div>
         </div>
       </div>

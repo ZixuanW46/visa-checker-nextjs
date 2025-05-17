@@ -11,6 +11,7 @@ export default {
     extend: {
       screens: {
         ssm: "380px",
+        ssmPlus: "420px",
         custom: "1100px",
         customPlus: "1280px",
         customBig: "1440px",

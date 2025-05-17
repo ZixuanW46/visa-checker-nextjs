@@ -18,8 +18,13 @@ const Slide3MediaPhone = ({ scrollYProgress }: Slide3MediaPhoneProps) => {
   // Transform scroll progress to x position
   const x = useTransform(
     scrollYProgress,
-    [0.45, 0.65, 0.85], // input range
-    [0, -frameSize.width * 1.036, -frameSize.width * 1.036 * 2] // output range
+    [0.43, 0.63, 0.68, 0.82], // input range
+    [
+      0,
+      -frameSize.width * 1.036,
+      -frameSize.width * 1.036,
+      -frameSize.width * 1.036 * 2,
+    ] // output range
   );
 
   const updateFrameSize = () => {
@@ -71,7 +76,7 @@ const Slide3MediaPhone = ({ scrollYProgress }: Slide3MediaPhoneProps) => {
         ref={phoneFrameRef}
         src={phone_frame}
         alt="Phone Frame"
-        className="w-[60dvw] md:w-[25dvw] md:max-h-[75dvh] object-contain relative z-10"
+        className="w-[80dvw] h-fit md:w-[25dvw] md:max-h-[75dvh] object-cover md:object-contain relative z-10"
         onLoad={handleImageLoad}
         loading="eager"
       />

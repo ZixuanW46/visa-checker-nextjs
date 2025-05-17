@@ -258,7 +258,7 @@ const IntroSection = () => {
                   style={{
                     opacity: opacity_3_pic,
                   }}
-                  className="w-fit h-fit absolute top-0 left-1/2 -translate-x-1/2"
+                  className="w-[75vw] h-fit absolute top-0 left-1/2 -translate-x-1/2"
                 >
                   <Slide3MediaPhone scrollYProgress={scrollYProgress0} />
                 </motion.div>

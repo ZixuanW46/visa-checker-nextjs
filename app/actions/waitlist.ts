@@ -4,8 +4,8 @@ import { createClient } from "@supabase/supabase-js";
 
 export async function addToWaitlist(data: { name: string; email: string }) {
   const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    process.env.STORAGE0516_NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.STORAGE0516_SUPABASE_SERVICE_ROLE_KEY!,
     {
       auth: {
         autoRefreshToken: false,
