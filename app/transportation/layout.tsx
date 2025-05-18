@@ -7,11 +7,17 @@ export default function RootLayout({
 }>) {
   return (
     <main className="max-w-[1440px] mx-auto">
-      <div className="">
-        <Navbar className="hidden md:flex" tab="transportation" />
-        {children}
-        <Navbar className="md:hidden block z-[100]" tab="transportation" />
-      </div>
+      <main className="min-h-[100dvh] max-w-[1440px] mx-auto">
+        <Navbar
+          className="hidden md:flex sticky top-0 z-[100]"
+          tab="transportation"
+        />
+        <div className="">{children}</div>
+        <Navbar
+          className="md:hidden sticky bottom-0 z-[100]"
+          tab="transportation"
+        />
+      </main>
     </main>
   );
 }
