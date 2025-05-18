@@ -79,7 +79,7 @@ const UnderDevelopment = () => {
         />
       )}
       <div className="w-full min-w-[21rem] md:w-[60%] h-full flex flex-col justify-start md:justify-center items-center gap-4">
-        <div className="w-[100%] h-[40%] md:hidden items-center justify-center relative mb-[1rem] ssm:mb-[7vh]">
+        <div className="w-[100%] min-h-[15rem] h-[40%] md:hidden items-center justify-center relative mb-[1rem] ssm:mb-[7vh]">
           <Image
             src={comingSoon_bg}
             alt="coming soon"
@@ -94,7 +94,7 @@ const UnderDevelopment = () => {
           />
         </div>
         <div className="w-full h-fit flex flex-col gap-3 justify-start items-center px-3 md:px-0">
-          <div className="w-[95%] ssm:w-[24rem] text-[clamp(1.5rem,7.5vw,2rem)] h-[2.5rem] font-bold leading-[36px] bg-gradient-to-r from-[#304139] via-[#4DBDBD] to-[#FD8613] bg-clip-text text-transparent">
+          <div className="w-[95%] ssm:w-[24rem] text-[clamp(1.5rem,7.35vw,2rem)] h-[2.5rem] font-bold leading-[36px] bg-gradient-to-r from-[#304139] via-[#4DBDBD] to-[#FD8613] bg-clip-text text-transparent">
             This page is on its way...
           </div>
           <div className="w-[95%] ssm:w-[24rem] font-normal text-sm leading-[20px] ">
@@ -112,8 +112,8 @@ const UnderDevelopment = () => {
             onSubmit={handleSubmit}
             className="w-[95%] ssm:w-[24rem] h-[4.9rem] p-[10px] bg-white rounded-[40px] border border-[#B2B2B2] shadow-[0px_0px_4px_1px_rgba(0,0,0,0.15)] flex items-center justify-between"
           >
-            <div className="w-full h-full flex justify-between items-center pl-[1.1rem]">
-              <div className="w-[5.1rem] h-full flex flex-col justify-center">
+            <div className="w-full h-full flex justify-between items-center pl-[1rem]">
+              <div className="w-[5.2rem] h-full flex flex-col justify-center">
                 <div className="text-[0.65rem] font-semibold">
                   Enter your name
                 </div>
@@ -126,8 +126,8 @@ const UnderDevelopment = () => {
                   required
                 />
               </div>
-              <div className="w-[1px] h-[60%] bg-gray-300"></div>
-              <div className="w-[5.1rem] h-full flex flex-col justify-center">
+              <div className="w-[1px] h-[60%] bg-gray-300 mr-[2px]"></div>
+              <div className="w-[5.2rem] h-full flex flex-col justify-center">
                 <div className="text-[0.65rem] font-semibold">
                   Enter your email
                 </div>
@@ -143,7 +143,7 @@ const UnderDevelopment = () => {
               <Button
                 type="submit"
                 variant="default"
-                className="w-[25%] ssm:w-[5.5rem] h-full rounded-full text-[0.6rem] ssm:text-[0.8rem] bg-[#304139] text-white ml-[1.1rem]"
+                className="w-[24%] ssm:w-[5.5rem] h-full rounded-full text-[0.6rem] ssm:text-[0.8rem] bg-[#304139] text-white ml-[1rem]"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Notify Me!"}
