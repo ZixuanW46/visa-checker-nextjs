@@ -94,7 +94,7 @@ const UnderDevelopment = () => {
           />
         </div>
         <div className="w-full h-fit flex flex-col gap-3 justify-start items-center px-3 md:px-0">
-          <div className="w-[95%] ssm:w-[24rem] text-[clamp(1.5rem,7.35vw,2rem)] h-[2.5rem] font-bold leading-[36px] bg-gradient-to-r from-[#304139] via-[#4DBDBD] to-[#FD8613] bg-clip-text text-transparent">
+          <div className="w-[95%] ssm:w-[24rem] text-[clamp(1.2rem,7.3dvw,2rem)] h-[2.5rem] font-bold leading-[36px] bg-gradient-to-r from-[#304139] via-[#4DBDBD] to-[#FD8613] bg-clip-text text-transparent">
             This page is on its way...
           </div>
           <div className="w-[95%] ssm:w-[24rem] font-normal text-sm leading-[20px] ">
@@ -114,9 +114,7 @@ const UnderDevelopment = () => {
           >
             <div className="w-full h-full flex justify-between items-center pl-[1rem]">
               <div className="w-[5.2rem] h-full flex flex-col justify-center">
-                <div className="text-[0.65rem] font-semibold">
-                  Enter your name
-                </div>
+                <div className="text-[10px] font-semibold">Enter your name</div>
                 <input
                   type="text"
                   value={name}
@@ -128,7 +126,7 @@ const UnderDevelopment = () => {
               </div>
               <div className="w-[1px] h-[60%] bg-gray-300 mr-[2px]"></div>
               <div className="w-[5.2rem] h-full flex flex-col justify-center">
-                <div className="text-[0.65rem] font-semibold">
+                <div className="text-[10px] font-semibold">
                   Enter your email
                 </div>
                 <input
