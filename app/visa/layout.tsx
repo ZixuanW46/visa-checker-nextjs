@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="max-w-[1440px] mx-auto">
+    <main className="max-w-[80rem] mx-auto">
       <div className="h-[100dvh] flex flex-col">
         <Navbar className="hidden md:flex" tab="visa" />
         <MobileTopPannel />

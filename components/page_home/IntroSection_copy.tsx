@@ -77,7 +77,7 @@ const IntroSection = () => {
   );
 
   return (
-    <div ref={ref0} className="w-full">
+    <div ref={ref0} className="w-full min-w-[20rem]">
       <motion.div
         initial={{ opacity: 1 }}
         style={{ opacity: opacity_0 }}
@@ -155,7 +155,7 @@ const IntroSection = () => {
                   style={{ opacity: opacity_2_pic }}
                   className="w-full h-fit absolute top-1/2 -translate-y-1/2 left-0"
                 >
-                  <div className="w-[40dvw] h-[85dvh]">
+                  <div className="w-[95%] h-[85dvh]">
                     <Goods />
                   </div>
                 </motion.div>
@@ -187,14 +187,14 @@ const IntroSection = () => {
            items-center z-10 relative pt-[17dvh]"
             >
               <div className="w-full h-[20dvh] flex flex-col justify-start items-center mb-[2dvh]">
-                <div className="text-[12dvw] font-bold text-white font-pt-sans-narrow">
+                <div className="text-[clamp(1rem,12dvw,4.5rem)] font-bold text-white font-pt-sans-narrow">
                   CHINA...SHALL I?
                 </div>
-                <div className="text-[3.3vw] font-[400] text-white max-w-[70dvw] text-center relative">
+                <div className="text-[clamp(0.5rem,3.3vw,0.8rem)] font-[400] text-white w-[70dvw] max-w-[27rem] text-center relative">
                   <motion.div
                     initial={{ opacity: 0 }}
                     style={{ opacity: opacity_1 }}
-                    className="absolute top-0 w-[70dvw] left-1/2 -translate-x-1/2"
+                    className="absolute top-0 w-full left-1/2 -translate-x-1/2"
                   >
                     From RedNote to DeepSeek, China&apos;s part of today&apos;s
                     trends. But when it comes to visiting... shall I?
@@ -202,7 +202,7 @@ const IntroSection = () => {
                   <motion.div
                     initial={{ opacity: 0 }}
                     style={{ opacity: opacity_2 }}
-                    className="absolute top-0 w-[70dvw] left-1/2 -translate-x-1/2"
+                    className="absolute top-0 w-full left-1/2 -translate-x-1/2"
                   >
                     You have probably bought goods from China at some point -
                     these days they&apos;re not just made in China, but designed
@@ -213,7 +213,7 @@ const IntroSection = () => {
                     style={{
                       opacity: opacity_3,
                     }}
-                    className="absolute top-0 w-[70dvw] left-1/2 -translate-x-1/2"
+                    className="absolute top-0 w-full left-1/2 -translate-x-1/2"
                   >
                     And you&apos;ve probably heard news about China, from the
                     traditional outlets, social media or through others - be it
@@ -222,7 +222,7 @@ const IntroSection = () => {
                   <motion.div
                     initial={{ opacity: 0 }}
                     style={{ opacity: opacity_4 }}
-                    className="absolute top-0 w-[70dvw] left-1/2 -translate-x-1/2"
+                    className="absolute top-0 w-full left-1/2 -translate-x-1/2"
                   >
                     But beyond all these, what is China really like?
                     <br />

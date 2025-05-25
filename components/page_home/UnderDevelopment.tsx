@@ -68,7 +68,7 @@ const UnderDevelopment = () => {
   };
 
   return (
-    <div className="w-full h-[calc(100vh-4rem)] md:h-[calc(100dvh-5rem)] md:min-h-[33rem] flex justify-center items-center">
+    <div className="w-full h-[calc(100vh-4rem)] md:h-[calc(100dvh-5rem)] md:min-h-[33rem] flex justify-center items-center max-w-[80rem] mx-auto">
       {showConfetti && (
         <ReactConfetti
           width={windowSize.width}
@@ -78,8 +78,8 @@ const UnderDevelopment = () => {
           gravity={0.3}
         />
       )}
-      <div className="w-full min-w-[21rem] md:w-[60%] h-full flex flex-col justify-start md:justify-center items-center gap-4">
-        <div className="w-[100%] min-h-[15rem] h-[40%] md:hidden items-center justify-center relative mb-[1rem] ssm:mb-[7vh]">
+      <div className="w-full md:w-[60%] max-w-[35rem] h-full flex flex-col justify-start md:justify-center items-center gap-4">
+        <div className="w-[100%] min-h-[15rem] h-[40%] md:hidden items-center justify-center relative mb-[1rem] ssmPlus:mb-[7vh]">
           <Image
             src={comingSoon_bg}
             alt="coming soon"
@@ -94,23 +94,23 @@ const UnderDevelopment = () => {
           />
         </div>
         <div className="w-full h-fit flex flex-col gap-3 justify-start items-center px-3 md:px-0">
-          <div className="w-[95%] ssm:w-[24rem] text-[clamp(1.2rem,7.3dvw,2rem)] h-[2.5rem] font-bold leading-[36px] bg-gradient-to-r from-[#304139] via-[#4DBDBD] to-[#FD8613] bg-clip-text text-transparent">
+          <div className="w-[95%] ssmPlus:w-[24rem] text-[clamp(1.5rem,7.3dvw,2rem)] h-[2.5rem] font-bold leading-[36px] bg-gradient-to-r from-[#304139] via-[#4DBDBD] to-[#FD8613] bg-clip-text text-transparent">
             This page is on its way...
           </div>
-          <div className="w-[95%] ssm:w-[24rem] font-normal text-sm leading-[20px] ">
+          <div className="w-[95%] ssmPlus:w-[24rem] font-normal text-sm leading-[20px] ">
             We&apos;re working hard to bring you this exciting new feature! The
             content is ready, but as beginner developers, we&apos;re taking a
             bit more time to perfect the implementation.
           </div>
-          <div className="w-[95%] ssm:w-[24rem] font-normal text-sm leading-[20px]">
+          <div className="w-[95%] ssmPlus:w-[24rem] font-normal text-sm leading-[20px]">
             <span className="font-bold">Expected launch:</span> this June! 🚀
           </div>
-          <div className="w-[95%] ssm:w-[24rem] font-bold text-sm leading-[20px] mb-3">
+          <div className="w-[95%] ssmPlus:w-[24rem] font-bold text-sm leading-[20px] mb-3">
             Leave your email and we&apos;ll notify you when it&apos;s ready!
           </div>
           <form
             onSubmit={handleSubmit}
-            className="w-[95%] ssm:w-[24rem] h-[4.9rem] p-[10px] bg-white rounded-[40px] border border-[#B2B2B2] shadow-[0px_0px_4px_1px_rgba(0,0,0,0.15)] flex items-center justify-between"
+            className="w-[95%] ssmPlus:w-[24rem] h-[4.9rem] p-[10px] bg-white rounded-[40px] border border-[#B2B2B2] shadow-[0px_0px_4px_1px_rgba(0,0,0,0.15)] flex items-center justify-between"
           >
             <div className="w-full h-full flex justify-between items-center pl-[1rem]">
               <div className="w-[5.2rem] h-full flex flex-col justify-center">
@@ -141,7 +141,7 @@ const UnderDevelopment = () => {
               <Button
                 type="submit"
                 variant="default"
-                className="w-[24%] ssm:w-[5.5rem] h-full rounded-full text-[0.6rem] ssm:text-[0.8rem] bg-[#304139] text-white ml-[1rem]"
+                className="w-[24%] ssmPlus:w-[5.5rem] h-full rounded-full text-[0.6rem] ssmPlus:text-[0.8rem] bg-[#304139] text-white ml-[1rem]"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Notify Me!"}
@@ -153,7 +153,7 @@ const UnderDevelopment = () => {
             {hasError &&
               "Sorry, there seem to be some errors... Please try again later."}
           </div>
-          <div className="text-gray-200 text-xs font-light w-[95%] ssm:w-[24rem] hidden md:block">
+          <div className="text-gray-200 text-xs font-light w-[95%] ssmPlus:w-[24rem] hidden md:block">
             © 2025 Capy Guide All rights reserved
           </div>
         </div>

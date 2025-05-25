@@ -50,7 +50,7 @@ const NavbarFolded = ({
         </div>
       </DialogTrigger>
       <DialogContent
-        className="rounded-xl !translate-y-0 md:!translate-x-0 !top-auto !bottom-[4.6rem] md:!bottom-auto md:!top-[4.6rem] md:!left-auto px-3 py-1 w-[92dvw] md:w-[20rem] md:!right-[2rem]"
+        className="rounded-xl !translate-y-0 md:!translate-x-0 !top-auto !bottom-[4.6rem] md:!bottom-auto md:!top-[5.5rem] md:!left-auto px-3 pt-1 pb-3 w-[92dvw] md:w-[20rem] md:!right-[2rem]"
         hideCloseButton
       >
         <DialogHeader>

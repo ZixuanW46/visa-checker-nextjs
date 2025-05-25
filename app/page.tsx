@@ -65,51 +65,53 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="" ref={ref}>
-      <div className="w-full sticky top-0 left-0 z-[50]">
-        <Navbar
-          className="hidden md:flex"
-          tab="home"
-          transparent={
-            visibleSlideIndex !== null &&
-            transparentSlides.includes(visibleSlideIndex)
-          }
-        />
-      </div>
-      <IntroSection />
+    <main className="w-[100dvw] h-screen" ref={ref}>
+      <div className="w-full min-w-[300px]">
+        <div className="w-full sticky top-0 left-0 z-[50] max-w-[1440px] mx-auto min-w-[300px]">
+          <Navbar
+            className="hidden md:flex"
+            tab="home"
+            transparent={
+              visibleSlideIndex !== null &&
+              transparentSlides.includes(visibleSlideIndex)
+            }
+          />
+        </div>
+        <IntroSection />
 
-      <div ref={setRef(5)}>
-        <Slide5CTA />
-      </div>
+        <div ref={setRef(5)}>
+          <Slide5CTA />
+        </div>
 
-      <div ref={setRef(6)}>
-        <Slide6History />
-      </div>
-      <div ref={setRef(7)}>
-        <Slide7City />
-      </div>
-      <div ref={setRef(8)}>
-        <Slide8Nature />
-      </div>
-      <div ref={setRef(9)}>
-        <Slide9Ancient />
-      </div>
-      <div ref={setRef(10)}>
-        <Slide10Tech />
-      </div>
-      <div ref={setRef(11)}>
-        <Slide11Culture />
-      </div>
-      <div ref={setRef(12)}>
-        <Slide12Food />
-      </div>
+        <div ref={setRef(6)}>
+          <Slide6History />
+        </div>
+        <div ref={setRef(7)}>
+          <Slide7City />
+        </div>
+        <div ref={setRef(8)}>
+          <Slide8Nature />
+        </div>
+        <div ref={setRef(9)}>
+          <Slide9Ancient />
+        </div>
+        <div ref={setRef(10)}>
+          <Slide10Tech />
+        </div>
+        <div ref={setRef(11)}>
+          <Slide11Culture />
+        </div>
+        <div ref={setRef(12)}>
+          <Slide12Food />
+        </div>
 
-      <div ref={setRef(13)}>
-        <Slide13FinalCTA />
-      </div>
+        <div ref={setRef(13)}>
+          <Slide13FinalCTA />
+        </div>
 
-      <div className="w-full fixed bottom-0 left-0 z-[100]">
-        <Navbar className="md:hidden block z-[100]" tab="home" />
+        <div className="w-full fixed bottom-0 left-0 z-[100] min-w-[300px]">
+          <Navbar className="md:hidden block z-[100]" tab="home" />
+        </div>
       </div>
     </main>
   );

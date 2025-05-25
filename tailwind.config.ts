@@ -12,7 +12,12 @@ export default {
       screens: {
         ssm: "380px",
         ssmPlus: "420px",
+        xs: "500px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
         custom: "1100px",
+        xl: "1280px",
         customPlus: "1280px",
         customBig: "1440px",
       },

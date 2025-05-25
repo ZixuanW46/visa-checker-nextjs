@@ -6,12 +6,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <main className="max-w-[1440px] mx-auto">
-      <main className="min-h-[100dvh] max-w-[1440px] mx-auto">
-        <Navbar className="hidden md:flex sticky top-0 z-[100]" tab="payment" />
-        <div className="">{children}</div>
-        <Navbar className="md:hidden sticky bottom-0 z-[100]" tab="payment" />
-      </main>
+    <main className="min-h-[100dvh]">
+      <div className="w-full min-h-[100dvh] min-w-[20rem] flex flex-col relative">
+        <Navbar className="hidden md:flex" tab="payment" showBorder />
+        <div className="flex-1 min-w-[20rem] mb-[5rem]">{children}</div>
+        <Navbar className="md:hidden" tab="payment" />
+      </div>
     </main>
   );
 }
