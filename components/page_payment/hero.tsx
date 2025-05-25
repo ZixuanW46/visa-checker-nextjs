@@ -32,7 +32,7 @@ const Hero = () => {
   const scrollToOverview = () => {
     const overviewSection = document.getElementById("overview");
     if (overviewSection) {
-      const offset = "100"; // adjust this value based on your header height
+      const offset = 100; // adjust this value based on your header height
       const elementPosition = overviewSection.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 
