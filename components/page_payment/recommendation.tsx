@@ -1,4 +1,3 @@
-import Image from "next/image";
 import alipay_in_use from "@/public/alipay_in_use.png";
 import cash_in_use from "@/public/cash_in_use.png";
 import card_in_use from "@/public/card_in_use.png";
