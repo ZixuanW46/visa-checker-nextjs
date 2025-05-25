@@ -8,7 +8,10 @@ import star_empty from "@/public/star_empty.png";
 
 const Overview = () => {
   return (
-    <div className="w-full min-w-[20rem] max-w-[80rem] mx-auto flex flex-col justify-center lg:px-[5rem] md:px-8 px-3 mt-[5rem]">
+    <div
+      id="overview"
+      className="w-full min-w-[20rem] max-w-[80rem] mx-auto flex flex-col justify-center lg:px-[5rem] md:px-8 px-3 mt-[5rem] md:mt-[8rem]"
+    >
       <div className="w-[100vw] min-w-[20rem] md:w-full flex flex-col md:gap-9 gap-5 items-center md:pb-[2.5rem] pb-[3.5rem] bg-[#F3F3F3] md:bg-transparent md:mx-0 -mx-3 px-3 md:px-0 pt-[3.5rem] md:pt-0">
         <p className="md:text-4xl text-2xl font-bold">Overview</p>
         <p className="md:text-sm text-xs font-normal">

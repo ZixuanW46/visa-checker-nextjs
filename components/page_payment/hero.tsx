@@ -29,6 +29,20 @@ const Hero = () => {
     }
   };
 
+  const scrollToOverview = () => {
+    const overviewSection = document.getElementById("overview");
+    if (overviewSection) {
+      const offset = "100"; // adjust this value based on your header height
+      const elementPosition = overviewSection.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   useEffect(() => {
     // Measure on window resize
     window.addEventListener("resize", measureHero);
@@ -47,6 +61,7 @@ const Hero = () => {
           src={paymentHeroMobile}
           alt="payment hero"
           className="w-full h-full object-contain"
+          loading="eager"
         />
       </div>
       <div className="w-full max-w-[80rem] mx-auto flex justify-center lg:px-[5rem] md:px-8 px-3 mt-[3rem]">
@@ -76,10 +91,13 @@ const Hero = () => {
             </p>
           </div>
           <div className="w-full flex justify-start mt-5 gap-[10%]">
-            <Button className="text-xs md:text-sm rounded-full hover:bg-gray-100">
+            <Button
+              onClick={scrollToOverview}
+              className="text-xs md:text-sm rounded-full hover:bg-gray-100 shadow-none"
+            >
               Overview
             </Button>
-            <Button className="text-xs md:text-sm rounded-full bg-logo text-black hover:bg-logo/80 hover:text-white">
+            <Button className="text-xs md:text-sm rounded-full bg-logo text-black hover:bg-logo/80 hover:text-white shadow-none">
               Learn the Details
             </Button>
           </div>
@@ -91,6 +109,7 @@ const Hero = () => {
             alt="payment hero"
             className="w-full h-full object-contain object-right"
             onLoad={measureHero}
+            loading="eager"
           />
           <Image
             src={reddit}

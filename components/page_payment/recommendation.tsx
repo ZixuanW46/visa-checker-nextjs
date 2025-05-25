@@ -14,7 +14,7 @@ import {
 
 const Recommendation = () => {
   return (
-    <div className="w-full min-w-[20rem] max-w-[80rem] mx-auto flex flex-col justify-center lg:px-[5rem] md:px-8 px-3 mt-[4rem] md:mt-[3rem]">
+    <div className="w-full min-w-[20rem] max-w-[80rem] mx-auto flex flex-col justify-center lg:px-[5rem] md:px-8 px-3 mt-[5rem] md:mt-[4rem]">
       <div className="w-full flex flex-col pb-[1.5rem] text-center md:text-left">
         <p className="md:text-3xl text-2xl font-bold">Our General</p>
         <p
